@@ -18,7 +18,7 @@ public class PokerHand {
     public static Card getCardByString(String given) {
         String number = given.substring(0, 1);
         String type = given.substring(1, 2);
-        return new Card(getCardTypeByString(type),getCardNumberByString(number));
+        return new Card(getCardTypeByString(type), getCardNumberByString(number));
     }
 
     public static CardNumber getCardNumberByString(String given) {
@@ -47,6 +47,8 @@ public class PokerHand {
     }
 
     public static Hand getAHandBy5Cards(List<Card> cards) {
+        if (cards.size() == 5)
+            return new Hand(cards);
         return null;
     }
 }
