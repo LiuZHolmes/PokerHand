@@ -4,6 +4,7 @@ import org.junit.Test;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class HandTest {
     @Test
@@ -30,5 +31,14 @@ public class HandTest {
         assertEquals(0,hand.power.level);
         assertEquals(CardNumber.SEVEN,hand.power.ace.getNumber());
 
+    }
+
+    @Test public void should_return_null_when_given_2D_3D_5S_6H_7S() {
+        String given = "2D 3D 5S 6H 7S";
+        Hand hand = PokerHand.getHandByString(given).get(0);
+
+        Power power = hand.tryPair();
+
+        assertNull(power);
     }
 }

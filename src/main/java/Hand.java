@@ -30,4 +30,8 @@ public class Hand {
         power.ace = cards.get(cards.size() - 1);
         power.level = 0;
     }
+
+    public Power tryPair() {
+        return null;
+    }
 }
