@@ -20,8 +20,12 @@
     - input: 2D 4S 3D 6S 5H
     - output: 2D 3D 4S 5H 6S
 2. calHandLevelAndAce
-    - input: 2D 3D 5S 6H 7S
-    - output: {ace: SEVEN, level: 0}
+    1. high card
+        - input: 2D 3D 5S 6H 7S
+        - output: {ace: SEVEN, level: 0}
+    2. pair
+        - input: 2D 2H 5S 6H 7S
+        - output: {ace: TWO, level: 1}
 2. tryPair
     1. not match
         - input: 2D 3D 5S 6H 7S
