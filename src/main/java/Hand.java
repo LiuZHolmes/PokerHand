@@ -40,6 +40,16 @@ public class Hand {
     }
 
     public Power tryTwoPairs() {
+        Map<CardNumber,Long> cardNumberCounts = cards.stream().map(Card::getNumber)
+                .collect(Collectors.groupingBy(x -> x,Collectors.counting()));
+        ArrayList<Map.Entry<CardNumber,Long>> list = new ArrayList<>(cardNumberCounts.entrySet());
+        list.sort(comparing(Map.Entry::getValue));
+        final Map.Entry<CardNumber,Long> item = list.get(list.size() - 1);
+        final Map.Entry<CardNumber,Long> secondItem = list.get(list.size() - 2);
+        final Map.Entry<CardNumber,Long> aceItem = item.getKey().compareTo(secondItem.getKey()) < 0 ? secondItem : item;
+        if (item.getValue() == 2L && secondItem.getValue() == 2L) {
+            return new Power(new Card(CardType.SPAED,aceItem.getKey()),2);
+        }
         return null;
     }
 }
