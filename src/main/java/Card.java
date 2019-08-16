@@ -1,5 +1,18 @@
 public class Card {
-    public Card(CardType cardType, CardNumber cardNumber) {
 
+    private CardType type;
+    private CardNumber number;
+
+    public Card(CardType type, CardNumber number) {
+        this.type = type;
+        this.number = number;
+    }
+
+    public CardType getType() {
+        return type;
+    }
+
+    public CardNumber getNumber() {
+        return number;
     }
 }

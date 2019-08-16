@@ -29,10 +29,12 @@ public class PokerHandTest {
     @Test
     public void should_return_Diamond_5_when_given_5D() {
         String given = "5D";
+        Card card = new Card(CardType.DIAMOND, CardNumber.FIVE);
 
-        Card card = PokerHand.getCardByString(given);
+        Card realCard = PokerHand.getCardByString(given);
 
-        assertEquals(new Card(CardType.DIAMOND, CardNumber.FIVE),card);
+        assertEquals(card.getNumber(),realCard.getNumber());
+        assertEquals(card.getType(),realCard.getType());
     }
     @Test
     public void should_return_player_2_wins_when_input_2D_3D_4D_5D_7S_7D_8D_9D_JD_QS() {
