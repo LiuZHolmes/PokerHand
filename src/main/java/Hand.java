@@ -11,4 +11,7 @@ public class Hand {
     public int size() {
         return cards.size();
     }
+
+    public void sort() {
+    }
 }

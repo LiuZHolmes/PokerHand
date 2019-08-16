@@ -1,3 +1,4 @@
+#### PokerHand
 1. getCardNumberByString
     - input: "5"
     - output: CardNumber.FIVE
@@ -13,3 +14,8 @@
 5. getHandByCards
     - input: "2D 3D 4D 5D 7S 7D 8D 9D JD QS"
     - output: [Hand]
+ ---
+#### Hand
+1. sortHand
+    - input: 2D 4S 3D 6S 5H
+    - output: 2D 3D 4S 5H 6S
