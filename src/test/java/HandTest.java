@@ -13,6 +13,11 @@ public class HandTest {
 
         hand.sort();
 
-        assertEquals("2D 3D 4S 5H 6S",hand.toString());
+        Card secondCard = new Card(CardType.DIAMOND, CardNumber.THREE);
+        Card fourthCard = new Card(CardType.HEART, CardNumber.FIVE);
+        assertEquals(secondCard.getType(),hand.cards.get(1).getType());
+        assertEquals(secondCard.getNumber(),hand.cards.get(1).getNumber());
+        assertEquals(secondCard.getType(),hand.cards.get(3).getType());
+        assertEquals(secondCard.getNumber(),hand.cards.get(3).getNumber());
     }
 }

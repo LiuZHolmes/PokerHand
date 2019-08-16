@@ -57,7 +57,12 @@ public class PokerHand {
     public static List<Hand> getHandByString(String given) {
         List<Card> cards = Arrays.stream(given.split(" "))
                 .map(PokerHand::getCardByString).collect(Collectors.toList());
-        return new ArrayList<>(Arrays.asList(getAHandBy5Cards(cards.subList(0,5)),
-                        getAHandBy5Cards(cards.subList(5,10))));
+        List<Hand> hands = new ArrayList<>();
+        int begin = 0;
+        while (begin < cards.size()) {
+            hands.add(getAHandBy5Cards(cards.subList(begin, begin + 5)));
+            begin += 5;
+        }
+        return hands;
     }
 }
