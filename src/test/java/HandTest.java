@@ -17,7 +17,7 @@ public class HandTest {
         Card fourthCard = new Card(CardType.HEART, CardNumber.FIVE);
         assertEquals(secondCard.getType(),hand.cards.get(1).getType());
         assertEquals(secondCard.getNumber(),hand.cards.get(1).getNumber());
-        assertEquals(secondCard.getType(),hand.cards.get(3).getType());
-        assertEquals(secondCard.getNumber(),hand.cards.get(3).getNumber());
+        assertEquals(fourthCard.getType(),hand.cards.get(3).getType());
+        assertEquals(fourthCard.getNumber(),hand.cards.get(3).getNumber());
     }
 }
