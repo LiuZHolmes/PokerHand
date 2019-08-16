@@ -1,8 +1,8 @@
 import java.util.List;
 
 public class Power {
-    Card ace;
-    int level;
-    List<Card> remainCard;
+    public Card ace;
+    public int level;
+    public List<Card> remainCard;
 
 }

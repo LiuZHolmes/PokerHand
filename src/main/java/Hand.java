@@ -6,11 +6,12 @@ public class Hand {
 
     public Power power;
 
+    List<Card> cards;
+
     public Hand(List<Card> cards) {
+        power = new Power();
         this.cards = cards;
     }
-
-    List<Card> cards;
 
     public int size() {
         return cards.size();
@@ -26,5 +27,7 @@ public class Hand {
     }
 
     public void calHandLevelAndAce() {
+        power.ace = cards.get(cards.size() - 1);
+        power.level = 0;
     }
 }
