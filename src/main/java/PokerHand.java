@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class PokerHand {
     static String game(List<String> cards) {
@@ -53,6 +55,9 @@ public class PokerHand {
     }
 
     public static List<Hand> getHandByString(String given) {
-        return null;
+        List<Card> cards = Arrays.stream(given.split(" "))
+                .map(PokerHand::getCardByString).collect(Collectors.toList());
+        return new ArrayList<>(Arrays.asList(getAHandBy5Cards(cards.subList(0,5)),
+                        getAHandBy5Cards(cards.subList(5,10))));
     }
 }
