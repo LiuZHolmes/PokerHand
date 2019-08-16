@@ -70,4 +70,13 @@ public class HandTest {
         assertEquals(2,power.level);
         assertEquals(CardNumber.FIVE,power.ace.getNumber());
     }
+
+    @Test public void should_return_null_when_given_2D_3D_5S_6H_7S_and_try_three_of_a_kind() {
+        String given = "2D 3D 5S 6H 7S";
+        Hand hand = PokerHand.getHandByString(given).get(0);
+
+        Power power = hand.tryThreeOfAKind();
+
+        assertNull(power);
+    }
 }

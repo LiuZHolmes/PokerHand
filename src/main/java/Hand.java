@@ -53,4 +53,8 @@ public class Hand {
         }
         return null;
     }
+
+    public Power tryThreeOfAKind() {
+        return null;
+    }
 }
