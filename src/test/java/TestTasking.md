@@ -29,3 +29,10 @@
     2. match
         - input: 2D 2H 5S 6H 7S
         - output: {ace: TWO, level: 1}
+3. tryTwoPairs
+    1. not match
+        - input: 2D 3D 5S 6H 7S
+        - output: null
+    2. match
+        - input: 2D 2H 5S 5H 7S
+        - output: {ace: FIVE, level: 2}

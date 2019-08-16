@@ -38,4 +38,8 @@ public class Hand {
         }
         return null;
     }
+
+    public Power tryTwoPairs() {
+        return null;
+    }
 }
