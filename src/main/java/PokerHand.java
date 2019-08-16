@@ -14,4 +14,15 @@ public class PokerHand {
                 HandOfPlayer2.get(HandOfPlayer1.size() - 1).charAt(0) ? 1 : 2;
         return "Player " + result + " wins";
     }
+
+    public static Card getCardByString(String given) {
+        String number = given.substring(0, 1);
+
+        String type = given.substring(1, 2);
+        return null;
+    }
+
+    public static CardNumber getCardNumberByString(String given) {
+        return null;
+    }
 }
