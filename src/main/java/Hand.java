@@ -55,6 +55,11 @@ public class Hand {
     }
 
     public Power tryThreeOfAKind() {
+        ArrayList<Map.Entry<CardNumber,Long>> list = countCards();
+        final Map.Entry<CardNumber,Long> item = list.get(list.size() - 1);
+        if (item.getValue() == 3L) {
+            return new Power(new Card(CardType.SPAED,item.getKey()),3);
+        }
         return null;
     }
 }
