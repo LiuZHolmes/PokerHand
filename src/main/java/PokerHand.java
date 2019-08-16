@@ -40,6 +40,10 @@ public class PokerHand {
     }
 
     public static CardType getCardTypeByString(String given) {
+        if ("D".equals(given)) return CardType.DIAMOND;
+        if ("S".equals(given)) return CardType.SPAED;
+        if ("H".equals(given)) return CardType.HEART;
+        if ("C".equals(given)) return CardType.CLUB;
         return null;
     }
 }
