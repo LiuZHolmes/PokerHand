@@ -49,6 +49,6 @@ public class HandTest {
         Power power = hand.tryPair();
 
         assertEquals(1,power.level);
-        assertEquals(CardNumber.SEVEN,power.ace.getNumber());
+        assertEquals(CardNumber.TWO,power.ace.getNumber());
     }
 }

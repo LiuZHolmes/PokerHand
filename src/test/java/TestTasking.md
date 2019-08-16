@@ -28,4 +28,4 @@
         - output: null
     2. match
         - input: 2D 2H 5S 6H 7S
-        - output: {ace: SEVEN, level: 1}
+        - output: {ace: TWO, level: 1}

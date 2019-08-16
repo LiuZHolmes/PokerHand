@@ -1,6 +1,7 @@
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
+
+import static java.util.Comparator.*;
 
 public class Hand {
 
@@ -18,12 +19,7 @@ public class Hand {
     }
 
     public void sort() {
-        cards = cards.stream().sorted(new Comparator<Card>() {
-            @Override
-            public int compare(Card o1, Card o2) {
-                return o1.getNumber().compareTo(o2.getNumber());
-            }
-        }).collect(Collectors.toList());
+        cards = cards.stream().sorted(comparing(Card::getNumber)).collect(Collectors.toList());
     }
 
     public void calHandLevelAndAce() {
@@ -32,6 +28,14 @@ public class Hand {
     }
 
     public Power tryPair() {
+        Map<CardNumber,Long> cardNumberCounts = cards.stream().map(Card::getNumber)
+                .collect(Collectors.groupingBy(x -> x,Collectors.counting()));
+        ArrayList<Map.Entry<CardNumber,Long>> list = new ArrayList<>(cardNumberCounts.entrySet());
+        list.sort(comparing(Map.Entry::getValue));
+        final Map.Entry<CardNumber,Long> item = list.get(list.size() - 1);
+        if (item.getValue() == 2L) {
+            return new Power(new Card(CardType.SPAED,item.getKey()),1);
+        }
         return null;
     }
 }
