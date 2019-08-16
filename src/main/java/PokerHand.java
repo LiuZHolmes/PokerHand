@@ -38,4 +38,8 @@ public class PokerHand {
         if ("A".equals(given)) return CardNumber.ACE;
         return null;
     }
+
+    public static CardType getCardTypeByString(String given) {
+        return null;
+    }
 }

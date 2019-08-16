@@ -18,6 +18,15 @@ public class PokerHandTest {
     }
 
     @Test
+    public void should_return_DIAMOND_when_given_D() {
+        String given = "D";
+
+        CardType cardType = PokerHand.getCardTypeByString(given);
+
+        assertEquals(CardType.DIAMOND,cardType);
+    }
+
+    @Test
     public void should_return_Diamond_5_when_given_5D() {
         String given = "5D";
 
