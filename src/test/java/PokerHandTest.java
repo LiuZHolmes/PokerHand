@@ -3,6 +3,8 @@ import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static org.junit.Assert.assertEquals;
 
@@ -35,6 +37,16 @@ public class PokerHandTest {
 
         assertEquals(card.getNumber(),realCard.getNumber());
         assertEquals(card.getType(),realCard.getType());
+    }
+
+    @Test
+    public void should_return_hand_when_given_5_cards() {
+        List<Card> cards = IntStream.rangeClosed(1,5).boxed()
+                .map(x -> new Card(CardType.SPAED,CardNumber.ACE)).collect(Collectors.toList());
+
+        Hand hand = PokerHand.getAHandBy5Cards(cards);
+
+        assertEquals(5,hand.size());
     }
     @Test
     public void should_return_player_2_wins_when_input_2D_3D_4D_5D_7S_7D_8D_9D_JD_QS() {

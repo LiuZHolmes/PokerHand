@@ -45,4 +45,8 @@ public class PokerHand {
         if ("C".equals(given)) return CardType.CLUB;
         return null;
     }
+
+    public static Hand getAHandBy5Cards(List<Card> cards) {
+        return null;
+    }
 }
