@@ -23,6 +23,19 @@ public class PokerHand {
     }
 
     public static CardNumber getCardNumberByString(String given) {
+        if ("2".equals(given)) return CardNumber.TWO;
+        if ("3".equals(given)) return CardNumber.THREE;
+        if ("4".equals(given)) return CardNumber.FOUR;
+        if ("5".equals(given)) return CardNumber.FIVE;
+        if ("6".equals(given)) return CardNumber.SIX;
+        if ("7".equals(given)) return CardNumber.SEVEN;
+        if ("8".equals(given)) return CardNumber.EIGHT;
+        if ("9".equals(given)) return CardNumber.NINE;
+        if ("T".equals(given)) return CardNumber.TEN;
+        if ("J".equals(given)) return CardNumber.JACK;
+        if ("Q".equals(given)) return CardNumber.QUEEN;
+        if ("K".equals(given)) return CardNumber.KING;
+        if ("A".equals(given)) return CardNumber.ACE;
         return null;
     }
 }
