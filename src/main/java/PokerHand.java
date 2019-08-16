@@ -51,4 +51,8 @@ public class PokerHand {
             return new Hand(cards);
         return null;
     }
+
+    public static List<Hand> getHandByString(String given) {
+        return null;
+    }
 }
