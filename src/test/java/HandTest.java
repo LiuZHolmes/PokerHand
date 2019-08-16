@@ -20,4 +20,15 @@ public class HandTest {
         assertEquals(fourthCard.getType(),hand.cards.get(3).getType());
         assertEquals(fourthCard.getNumber(),hand.cards.get(3).getNumber());
     }
+
+    @Test public void should_return_level_0_and_ace_SEVEN_when_given_2D_3D_5S_6H_7S() {
+        String given = "2D 3D 5S 6H 7S";
+        Hand hand = PokerHand.getHandByString(given).get(0);
+
+        hand.calHandLevelAndAce();
+
+        assertEquals(0,hand.power.level);
+        assertEquals(CardNumber.SEVEN,hand.power.ace.getNumber());
+
+    }
 }

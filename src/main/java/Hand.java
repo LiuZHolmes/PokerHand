@@ -4,6 +4,8 @@ import java.util.stream.Collectors;
 
 public class Hand {
 
+    public Power power;
+
     public Hand(List<Card> cards) {
         this.cards = cards;
     }
@@ -21,5 +23,8 @@ public class Hand {
                 return o1.getNumber().compareTo(o2.getNumber());
             }
         }).collect(Collectors.toList());
+    }
+
+    public void calHandLevelAndAce() {
     }
 }
