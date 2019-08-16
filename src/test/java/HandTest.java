@@ -79,4 +79,14 @@ public class HandTest {
 
         assertNull(power);
     }
+
+    @Test public void should_return_level_3_and_ace_TWO_when_given_2D_2H_2S_5H_7S_and_try_three_of_a_kind() {
+        String given = "2D 2H 2S 5H 7S";
+        Hand hand = PokerHand.getHandByString(given).get(0);
+
+        Power power = hand.tryThreeOfAKind();
+
+        assertEquals(3,power.level);
+        assertEquals(CardNumber.TWO,power.ace.getNumber());
+    }
 }
