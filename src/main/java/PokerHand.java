@@ -67,6 +67,6 @@ public class PokerHand {
     }
 
     public static int compareLevel(PowerLevel level, PowerLevel secondLevel) {
-        return 0;
+        return -1;
     }
 }
