@@ -86,4 +86,8 @@ public class PokerHand {
         }
         return 0;
     }
+
+    public static int compareHand(Hand hand, Hand secondHand) {
+        return 0;
+    }
 }
