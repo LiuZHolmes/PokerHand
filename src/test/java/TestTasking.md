@@ -25,7 +25,7 @@
     1. 
         - input: 5D 2S
         - output: positive
-8. compareRemainCard
+8. compareRemainHand
     1. 
         - input: [2D 3D 5S 6H] [2D 4D 5S 6H]
         - output: negative
