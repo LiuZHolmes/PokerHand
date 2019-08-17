@@ -89,6 +89,6 @@ public class Hand {
     }
 
     public void calRemainHand() {
-
+        setRemainHand(new Hand(new ArrayList<>()));
     }
 }
