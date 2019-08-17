@@ -144,12 +144,7 @@ public class HandTest {
 
     @Test
     public void should_return_empty_list_when_given_2D_3D_5S_6H_7S_and_cal_remain_hand() {
-        Hand hand = spy(new Hand(new ArrayList<>()));
-        when(hand.getCards()).thenReturn(new ArrayList<>(Arrays.asList(PokerHand.getCardByString("2D"),
-                PokerHand.getCardByString("3D"),
-                PokerHand.getCardByString("5S"),
-                PokerHand.getCardByString("6H"),
-                PokerHand.getCardByString("7S"))));
+        Hand hand = spy(PokerHand.getHandByString("2D 3D 5S 6H 7S").get(0));
         when(hand.getPower()).thenReturn(new Power(PokerHand.getCardByString("7S"), PowerLevel.HIGHCARD));
 
         hand.calRemainHand();
@@ -159,12 +154,7 @@ public class HandTest {
 
     @Test
     public void should_return_5S_6H_7S_when_given_2D_2H_5S_6H_7S_and_cal_remain_hand() {
-        Hand hand = spy(new Hand(new ArrayList<>()));
-        when(hand.getCards()).thenReturn(new ArrayList<>(Arrays.asList(PokerHand.getCardByString("2D"),
-                PokerHand.getCardByString("2H"),
-                PokerHand.getCardByString("5S"),
-                PokerHand.getCardByString("6H"),
-                PokerHand.getCardByString("7S"))));
+        Hand hand = spy(PokerHand.getHandByString("2D 2H 5S 6H 7S").get(0));
         when(hand.getPower()).thenReturn(new Power(PokerHand.getCardByString("2H"), PowerLevel.PAIR));
 
         hand.calRemainHand();
@@ -176,12 +166,7 @@ public class HandTest {
 
     @Test
     public void should_return_7S_when_given_2D_2H_5S_5H_7S_and_cal_remain_hand() {
-        Hand hand = spy(new Hand(new ArrayList<>()));
-        when(hand.getCards()).thenReturn(new ArrayList<>(Arrays.asList(PokerHand.getCardByString("2D"),
-                PokerHand.getCardByString("2H"),
-                PokerHand.getCardByString("5S"),
-                PokerHand.getCardByString("5H"),
-                PokerHand.getCardByString("7S"))));
+        Hand hand = spy(PokerHand.getHandByString("2D 2H 5S 5H 7S").get(0));
         when(hand.getPower()).thenReturn(new Power(PokerHand.getCardByString("5H"),
                 PokerHand.getCardByString("2H"), PowerLevel.TWOPAIRS));
 
@@ -194,12 +179,7 @@ public class HandTest {
 
     @Test
     public void should_return_5H_7S_when_given_2D_2H_2S_5H_7S_and_cal_remain_hand() {
-        Hand hand = spy(new Hand(new ArrayList<>()));
-        when(hand.getCards()).thenReturn(new ArrayList<>(Arrays.asList(PokerHand.getCardByString("2D"),
-                PokerHand.getCardByString("2H"),
-                PokerHand.getCardByString("2S"),
-                PokerHand.getCardByString("5H"),
-                PokerHand.getCardByString("7S"))));
+        Hand hand = spy(PokerHand.getHandByString("2D 2H 2S 5H 7S").get(0));
         when(hand.getPower()).thenReturn(new Power(PokerHand.getCardByString("2S"),PowerLevel.THREEOFAKIND));
 
         hand.calRemainHand();
