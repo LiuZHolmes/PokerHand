@@ -81,8 +81,10 @@ public class Hand {
         final Map.Entry<CardNumber, Long> item = list.get(list.size() - 1);
         final Map.Entry<CardNumber, Long> secondItem = list.get(list.size() - 2);
         final Map.Entry<CardNumber, Long> aceItem = item.getKey().compareTo(secondItem.getKey()) < 0 ? secondItem : item;
+        final Map.Entry<CardNumber, Long> secondAceItem = item.getKey().compareTo(secondItem.getKey()) < 0 ? item : secondItem;
         if (item.getValue() == 2L && secondItem.getValue() == 2L) {
-            return new Power(new Card(CardType.SPAED, aceItem.getKey()), 2);
+            return new Power(new Card(CardType.SPAED, aceItem.getKey()),
+                    new Card(CardType.SPAED, secondAceItem.getKey()),2);
         }
         return null;
     }
