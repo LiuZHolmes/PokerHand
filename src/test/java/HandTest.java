@@ -167,4 +167,21 @@ public class HandTest {
         assertEquals(CardNumber.SEVEN, hand.getRemainHand().getCards()
                 .get(hand.getRemainHand().size() - 1).getNumber());
     }
+
+    @Test
+    public void should_return_7S_when_given_2D_2H_5S_5H_7S_and_cal_remain_hand() {
+        Hand hand = spy(new Hand(new ArrayList<>()));
+        when(hand.getCards()).thenReturn(new ArrayList<>(Arrays.asList(PokerHand.getCardByString("2D"),
+                PokerHand.getCardByString("2H"),
+                PokerHand.getCardByString("5S"),
+                PokerHand.getCardByString("5H"),
+                PokerHand.getCardByString("7S"))));
+        when(hand.getPower()).thenReturn(new Power(PokerHand.getCardByString("5H"),2));
+
+        hand.calRemainHand();
+
+        assertEquals(1, hand.getRemainHand().size());
+        assertEquals(CardNumber.SEVEN, hand.getRemainHand().getCards()
+                .get(hand.getRemainHand().size() - 1).getNumber());
+    }
 }

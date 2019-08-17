@@ -29,10 +29,10 @@
     3. pair
         - input: 2D 2H 5S 6H 7S
         - output: {ace: TWO, level: 1}
-    4. tryTwoPairs
+    4. twoPairs
         - input: 2D 2H 5S 5H 7S
         - output: {ace: FIVE, level: 2}
-    5. tryThreeOfAKind
+    5. threeOfAKind
         - input: 2D 2H 2S 5H 7S
         - output: {ace: TWO, level: 3}
 2. tryPair
@@ -63,3 +63,6 @@
     2. pair
         - input: 2D 2H 5S 6H 7S
         - output: 5S 6H 7S
+    3. twoPairs
+        - input: 2D 2H 5S 5H 7S
+        - output: 7S
