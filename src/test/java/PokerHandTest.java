@@ -138,7 +138,7 @@ public class PokerHandTest {
 
         final String result = PokerHand.getWinner(given);
 
-        assertEquals("Tied!", result);
+        assertEquals(Winner.TIED, result);
     }
 
     @Test
@@ -147,7 +147,7 @@ public class PokerHandTest {
 
         final String result = PokerHand.getWinner(given);
 
-        assertEquals("Player 1 wins!", result);
+        assertEquals(Winner.PLAYER_1_WINS, result);
     }
 
     @Test
