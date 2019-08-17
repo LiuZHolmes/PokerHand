@@ -23,7 +23,9 @@ public class Hand {
     }
 
     public void calHandLevelAndAce() {
-        if (tryPair() != null) {
+        if (tryTwoPairs() != null) {
+            power = tryTwoPairs();
+        } else if (tryPair() != null) {
             power = tryPair();
         } else {
             power.ace = cards.get(cards.size() - 1);
