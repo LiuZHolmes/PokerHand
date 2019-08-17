@@ -46,6 +46,9 @@
     2. 
         - input: positive
         - output: "Player 1 wins!"
+    3. 
+        - input: negative
+        - output: "Player 2 wins!"
  ---
 #### Hand
 1. sortHand
