@@ -98,4 +98,8 @@ public class PokerHand {
         }
         return compareRemainHand(hand.getRemainHand(),secondHand.getRemainHand());
     }
+
+    public static String getWinner(int given) {
+        return null;
+    }
 }
