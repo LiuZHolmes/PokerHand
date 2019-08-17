@@ -43,6 +43,9 @@
     1. 
         - input: 0
         - output: "tied"
+    2. 
+        - input: positive
+        - output: "Player 1 wins!"
  ---
 #### Hand
 1. sortHand
