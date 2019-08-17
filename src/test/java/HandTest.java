@@ -145,8 +145,8 @@ public class HandTest {
         String given = "2D 3D 5S 6H 7S";
         Hand hand = PokerHand.getHandByString(given).get(0);
 
-        Hand remainHand = hand.calRemainHand();
+        hand.calRemainHand();
 
-        assertEquals(0, remainHand.size());
+        assertEquals(0, hand.getRemainHand().size());
     }
 }

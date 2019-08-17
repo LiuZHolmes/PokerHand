@@ -9,6 +9,8 @@ public class Hand {
 
     List<Card> cards;
 
+    Hand remainHand;
+
     public Hand(List<Card> cards) {
         power = new Power();
         this.cards = cards;
@@ -28,6 +30,14 @@ public class Hand {
 
     public void setPower(Power power) {
         this.power = power;
+    }
+
+    public Hand getRemainHand() {
+        return remainHand;
+    }
+
+    public void setRemainHand(Hand remainHand) {
+        this.remainHand = remainHand;
     }
 
     public void calHandLevelAndAce() {
@@ -78,7 +88,7 @@ public class Hand {
         return null;
     }
 
-    public Hand calRemainHand() {
-        return null;
+    public void calRemainHand() {
+
     }
 }
