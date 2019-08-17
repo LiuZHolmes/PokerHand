@@ -23,6 +23,7 @@ public class Hand {
     }
 
     public void calHandLevelAndAce() {
+        sort();
         if (tryThreeOfAKind() != null) power = tryThreeOfAKind();
         else if (tryTwoPairs() != null) power = tryTwoPairs();
         else if (tryPair() != null) power = tryPair();
