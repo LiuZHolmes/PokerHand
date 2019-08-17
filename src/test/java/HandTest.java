@@ -143,13 +143,15 @@ public class HandTest {
     }
 
     @Test
-    public void should_return_empty_list_when_given_2D_3D_5S_6H_7S_and_cal_remain_hand() {
+    public void should_return_2D_3D_5S_6H_when_given_2D_3D_5S_6H_7S_and_cal_remain_hand() {
         Hand hand = spy(PokerHand.getHandByString("2D 3D 5S 6H 7S").get(0));
         when(hand.getPower()).thenReturn(new Power(PokerHand.getCardByString("7S"), PowerLevel.HIGHCARD));
 
         hand.calRemainHand();
 
-        assertEquals(0, hand.getRemainHand().size());
+        assertEquals(4, hand.getRemainHand().size());
+        assertEquals(CardNumber.SIX, hand.getRemainHand().getCards()
+                .get(hand.getRemainHand().size() - 1).getNumber());
     }
 
     @Test

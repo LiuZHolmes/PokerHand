@@ -97,7 +97,7 @@
 4. calRemainHand
     1. high card
         - input: 2D 3D 5S 6H 7S
-        - output: []
+        - output: [2D 3D 5S 6H]
     2. pair
         - input: 2D 2H 5S 6H 7S
         - output: 5S 6H 7S
