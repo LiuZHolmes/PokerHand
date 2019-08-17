@@ -20,16 +20,19 @@
     - input: 2D 4S 3D 6S 5H
     - output: 2D 3D 4S 5H 6S
 2. calHandLevelAndAce
-    1. high card
+    1. unsort
+        - input: 2D 5S 3D 7S 6H
+        - output: {ace: SEVEN, level: 0}
+    2. high card
         - input: 2D 3D 5S 6H 7S
         - output: {ace: SEVEN, level: 0}
-    2. pair
+    3. pair
         - input: 2D 2H 5S 6H 7S
         - output: {ace: TWO, level: 1}
-    3. tryTwoPairs
+    4. tryTwoPairs
         - input: 2D 2H 5S 5H 7S
         - output: {ace: FIVE, level: 2}
-    4. tryThreeOfAKind
+    5. tryThreeOfAKind
         - input: 2D 2H 2S 5H 7S
         - output: {ace: TWO, level: 3}
 2. tryPair
