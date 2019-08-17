@@ -69,4 +69,8 @@ public class PokerHand {
     public static int compareLevel(PowerLevel level, PowerLevel secondLevel) {
         return level.compareTo(secondLevel);
     }
+
+    public static int compareAce(Card card, Card secondCard) {
+        return 0;
+    }
 }

@@ -67,11 +67,20 @@ public class PokerHandTest {
     }
 
     @Test
-    public void should_return_1_when_given_THREEOFAKIND_PAIR() {
+    public void should_return_positive_when_given_THREEOFAKIND_PAIR() {
         final int result = PokerHand.compareLevel(PowerLevel.THREEOFAKIND, PowerLevel.PAIR);
 
         assertTrue(result > 0);
     }
+
+    @Test
+    public void should_return_positive_when_given_5D_and_2S() {
+        final int result = PokerHand.compareAce(PokerHand.getCardByString("5D"),
+                PokerHand.getCardByString("2S"));
+
+        assertTrue(result > 0);
+    }
+
 
     @Test
     public void should_return_player_2_wins_when_input_2D_3D_4D_5D_7S_7D_8D_9D_JD_QS() {
