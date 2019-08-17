@@ -62,4 +62,4 @@
         - output: []
     2. pair
         - input: 2D 2H 5S 6H 7S
-        - output: 7S
+        - output: 5S 6H 7S

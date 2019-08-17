@@ -1,10 +1,12 @@
-import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class HandTest {
     @Test
@@ -148,5 +150,22 @@ public class HandTest {
         hand.calRemainHand();
 
         assertEquals(0, hand.getRemainHand().size());
+    }
+
+    @Test
+    public void should_return_5S_6H_7S_when_given_2D_2H_5S_6H_7S_and_cal_remain_hand() {
+        Hand hand = mock(Hand.class);
+        when(hand.getCards()).thenReturn(new ArrayList<>(Arrays.asList(PokerHand.getCardByString("2D"),
+                PokerHand.getCardByString("2H"),
+                PokerHand.getCardByString("5S"),
+                PokerHand.getCardByString("6H"),
+                PokerHand.getCardByString("7S"))));
+        when(hand.getPower()).thenReturn(new Power(PokerHand.getCardByString("2H"),1));
+
+        hand.calRemainHand();
+
+        assertEquals(3, hand.getRemainHand().size());
+        assertEquals(CardNumber.SEVEN, hand.getRemainHand().getCards()
+                .get(hand.getRemainHand().size() - 1).getNumber());
     }
 }
