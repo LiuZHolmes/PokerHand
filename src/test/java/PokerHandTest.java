@@ -61,22 +61,29 @@ public class PokerHandTest {
 
     @Test
     public void should_return_negative_when_given_HIGHCARD_PAIR() {
-        final int result = PokerHand.compareLevel(PowerLevel.HIGHCARD, PowerLevel.PAIR);
+        final PowerLevel level = PowerLevel.HIGHCARD;
+        final PowerLevel secondLevel = PowerLevel.PAIR;
+
+        final int result = PokerHand.compareLevel(level, secondLevel);
 
         assertTrue(result < 0);
     }
 
     @Test
     public void should_return_positive_when_given_THREEOFAKIND_PAIR() {
-        final int result = PokerHand.compareLevel(PowerLevel.THREEOFAKIND, PowerLevel.PAIR);
+        final PowerLevel level = PowerLevel.THREEOFAKIND;
+        final PowerLevel secondLevel = PowerLevel.PAIR;
+
+        final int result = PokerHand.compareLevel(level, secondLevel);
 
         assertTrue(result > 0);
     }
 
     @Test
     public void should_return_positive_when_given_5D_and_2S() {
-        final int result = PokerHand.compareAce(PokerHand.getCardByString("5D"),
-                PokerHand.getCardByString("2S"));
+        final Card card = PokerHand.getCardByString("5D");
+        final Card secondCard = PokerHand.getCardByString("2S");
+        final int result = PokerHand.compareAce(card, secondCard);
 
         assertTrue(result > 0);
     }
@@ -85,15 +92,17 @@ public class PokerHandTest {
     public void should_return_negative_when_given_2D_3D_5S_6H_and_2D_4D_5S_6H() {
         Hand remainHand = PokerHand.getHandByString("2D 3D 5S 6H").get(0);
         Hand secondRemainHand = PokerHand.getHandByString("2D 4D 5S 6H").get(0);
+
         final int result = PokerHand.compareRemainHand(remainHand, secondRemainHand);
 
         assertTrue(result < 0);
     }
 
     @Test
-    public void should_return_negative_when_given_2D_4D_5S_6H_and_2D_3D_5S_6H() {
+    public void should_return_positive_when_given_2D_4D_5S_6H_and_2D_3D_5S_6H() {
         Hand remainHand = PokerHand.getHandByString("2D 4D 5S 6H").get(0);
         Hand secondRemainHand = PokerHand.getHandByString("2D 3D 5S 6H").get(0);
+
         final int result = PokerHand.compareRemainHand(remainHand, secondRemainHand);
 
         assertTrue(result > 0);

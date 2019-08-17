@@ -29,9 +29,13 @@
     1. 
         - input: [2D 3D 5S 6H] [2D 4D 5S 6H]
         - output: negative
-    1. 
+    2. 
         - input: [2D 4D 5S 6H] [2D 3D 5S 6H] 
         - output: positive
+9. getResultByHandsPower
+    1. 
+        - input: [2D 3D 4D 5D 7S] [7D 8D 9D JD QS]
+        - output: negatvie
  ---
 #### Hand
 1. sortHand
