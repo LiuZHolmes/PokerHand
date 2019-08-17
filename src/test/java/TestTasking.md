@@ -17,10 +17,10 @@
 6. compareLevel
     1. 
         - input: HIGHCARD PAIR
-        - output: -1
+        - output: negative
     2. 
         - input: THREEOFAKIND PAIR
-        - output: 1
+        - output: positive
  ---
 #### Hand
 1. sortHand

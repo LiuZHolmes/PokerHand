@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class PokerHandTest {
 
@@ -16,7 +17,7 @@ public class PokerHandTest {
 
         CardNumber cardNumber = PokerHand.getCardNumberByString(given);
 
-        assertEquals(CardNumber.FIVE,cardNumber);
+        assertEquals(CardNumber.FIVE, cardNumber);
     }
 
     @Test
@@ -25,7 +26,7 @@ public class PokerHandTest {
 
         CardType cardType = PokerHand.getCardTypeByString(given);
 
-        assertEquals(CardType.DIAMOND,cardType);
+        assertEquals(CardType.DIAMOND, cardType);
     }
 
     @Test
@@ -35,18 +36,18 @@ public class PokerHandTest {
 
         Card realCard = PokerHand.getCardByString(given);
 
-        assertEquals(card.getNumber(),realCard.getNumber());
-        assertEquals(card.getType(),realCard.getType());
+        assertEquals(card.getNumber(), realCard.getNumber());
+        assertEquals(card.getType(), realCard.getType());
     }
 
     @Test
     public void should_return_hand_when_given_5_cards() {
-        List<Card> cards = IntStream.rangeClosed(1,5).boxed()
-                .map(x -> new Card(CardType.SPAED,CardNumber.ACE)).collect(Collectors.toList());
+        List<Card> cards = IntStream.rangeClosed(1, 5).boxed()
+                .map(x -> new Card(CardType.SPAED, CardNumber.ACE)).collect(Collectors.toList());
 
         Hand hand = PokerHand.getAHandBy5Cards(cards);
 
-        assertEquals(5,hand.size());
+        assertEquals(5, hand.size());
     }
 
     @Test
@@ -55,30 +56,30 @@ public class PokerHandTest {
 
         List<Hand> hands = PokerHand.getHandByString(given);
 
-        assertEquals(2,hands.size());
+        assertEquals(2, hands.size());
     }
 
     @Test
-    public void should_return_minus_1_when_given_HIGHCARD_PAIR() {
-        final int result = PokerHand.compareLevel(PowerLevel.HIGHCARD,PowerLevel.PAIR);
+    public void should_return_negative_when_given_HIGHCARD_PAIR() {
+        final int result = PokerHand.compareLevel(PowerLevel.HIGHCARD, PowerLevel.PAIR);
 
-        assertEquals(-1,result);
+        assertTrue(result < 0);
     }
 
     @Test
     public void should_return_1_when_given_THREEOFAKIND_PAIR() {
-        final int result = PokerHand.compareLevel(PowerLevel.THREEOFAKIND,PowerLevel.PAIR);
+        final int result = PokerHand.compareLevel(PowerLevel.THREEOFAKIND, PowerLevel.PAIR);
 
-        assertEquals(1,result);
+        assertTrue(result > 0);
     }
 
     @Test
     public void should_return_player_2_wins_when_input_2D_3D_4D_5D_7S_7D_8D_9D_JD_QS() {
-        List<String> cards = Arrays.asList("2D","3D","4D","5D","7S",
-                                            "7D","8D","9D","JD","QS");
+        List<String> cards = Arrays.asList("2D", "3D", "4D", "5D", "7S",
+                "7D", "8D", "9D", "JD", "QS");
 
         String result = PokerHand.game(cards);
 
-        assertEquals("Player 2 wins",result);
+        assertEquals("Player 2 wins", result);
     }
 }
