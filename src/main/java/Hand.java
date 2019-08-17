@@ -102,8 +102,6 @@ public class Hand {
         Hand remainHand = new Hand(new ArrayList<>());
         final Power power = getPower();
         switch (power.getLevel()) {
-            case HIGHCARD:
-                break;
             case TWOPAIRS:
                 getCards().stream().filter(x -> !x.getNumber().equals(power.getAce().getNumber())
                         && !x.getNumber().equals(power.getSecondAce().getNumber()))

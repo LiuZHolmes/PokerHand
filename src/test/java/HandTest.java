@@ -182,7 +182,7 @@ public class HandTest {
     @Test
     public void should_return_5H_7S_when_given_2D_2H_2S_5H_7S_and_cal_remain_hand() {
         Hand hand = spy(PokerHand.getHandByString("2D 2H 2S 5H 7S").get(0));
-        when(hand.getPower()).thenReturn(new Power(PokerHand.getCardByString("2S"),PowerLevel.THREEOFAKIND));
+        when(hand.getPower()).thenReturn(new Power(PokerHand.getCardByString("2S"), PowerLevel.THREEOFAKIND));
 
         hand.calRemainHand();
 
@@ -192,13 +192,13 @@ public class HandTest {
     }
 
     @Test
-    public void should_return_level_HIGHCARD_and_ace_SEVEN_and_remain_hand_empty_when_given_2D_5S_3D_7S_6H_and_cal_hand_power() {
+    public void should_return_level_HIGHCARD_and_ace_SEVEN_and_remain_hand_size_4_when_given_2D_5S_3D_7S_6H_and_cal_hand_power() {
         String given = "2D 5S 3D 7S 6H";
         Hand hand = PokerHand.getHandByString(given).get(0);
 
         hand.calHandPower();
 
-        assertEquals(0, hand.getRemainHand().size());
+        assertEquals(4, hand.getRemainHand().size());
         assertEquals(CardNumber.SEVEN, hand.getPower().getAce().getNumber());
         assertEquals(PowerLevel.HIGHCARD, hand.getPower().getLevel());
     }
