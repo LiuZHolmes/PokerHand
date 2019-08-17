@@ -8,7 +8,7 @@ import static org.junit.Assert.assertNull;
 
 public class HandTest {
     @Test
-    public void should_return_2D_3D_4S_5H_6S_when_given_2D_4S_3D_6S_5H() {
+    public void should_return_2D_3D_4S_5H_6S_when_given_2D_4S_3D_6S_5H_and_sort() {
         String given = "2D 4S 3D 6S 5H";
         Hand hand = PokerHand.getHandByString(given).get(0);
 
@@ -23,7 +23,7 @@ public class HandTest {
     }
 
     @Test
-    public void should_return_level_0_and_ace_SEVEN_when_given_2D_3D_5S_6H_7S() {
+    public void should_return_level_0_and_ace_SEVEN_when_given_2D_3D_5S_6H_7S_and_cal_hande_level_and_ace() {
         String given = "2D 3D 5S 6H 7S";
         Hand hand = PokerHand.getHandByString(given).get(0);
 
@@ -34,7 +34,7 @@ public class HandTest {
     }
 
     @Test
-    public void should_return_level_0_and_ace_SEVEN_when_given_2D_5S_3D_7S_6H() {
+    public void should_return_level_0_and_ace_SEVEN_when_given_2D_5S_3D_7S_6H_and_cal_hande_level_and_ace() {
         String given = "2D 5S 3D 7S 6H";
         Hand hand = PokerHand.getHandByString(given).get(0);
 
@@ -45,7 +45,7 @@ public class HandTest {
     }
 
     @Test
-    public void should_return_level_1_and_ace_TWO_when_given_2D_2H_5S_6H_7S() {
+    public void should_return_level_1_and_ace_TWO_when_given_2D_2H_5S_6H_7S_and_cal_hande_level_and_ace() {
         String given = "2D 2H 5S 6H 7S";
         Hand hand = PokerHand.getHandByString(given).get(0);
 
@@ -56,7 +56,7 @@ public class HandTest {
     }
 
     @Test
-    public void should_return_level_2_and_ace_FIVE_when_given_2D_2H_5S_5H_7S() {
+    public void should_return_level_2_and_ace_FIVE_when_given_2D_2H_5S_5H_7S_and_cal_hande_level_and_ace() {
         String given = "2D 2H 5S 5H 7S";
         Hand hand = PokerHand.getHandByString(given).get(0);
 
@@ -67,7 +67,7 @@ public class HandTest {
     }
 
     @Test
-    public void should_return_level_3_and_ace_TWO_when_given_2D_2H_2S_5H_7S() {
+    public void should_return_level_3_and_ace_TWO_when_given_2D_2H_2S_5H_7S_and_cal_hande_level_and_ace() {
         String given = "2D 2H 2S 5H 7S";
         Hand hand = PokerHand.getHandByString(given).get(0);
 
