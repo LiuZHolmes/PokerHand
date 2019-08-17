@@ -4,8 +4,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class PokerHand {
-    static String game(String cards){
-        return null;
+    static String game(String cards) {
+        List<Hand> hands = getHandByString(cards);
+        hands.forEach(Hand::calHandPower);
+        return getWinner(compareHand(hands.get(0), hands.get(1)));
     }
 
     public static Card getCardByString(String given) {
