@@ -61,7 +61,7 @@ public class PokerHand {
         int begin = 0;
         while (begin < cards.size()) {
             final int diff = cards.size() - begin;
-            hands.add(getAHandBy5Cards(cards.subList(begin, diff > 5 ? begin + 5 : begin + diff)));
+            hands.add(new Hand(cards.subList(begin, diff > 5 ? begin + 5 : begin + diff)));
             begin += 5;
         }
         return hands;
