@@ -203,4 +203,16 @@ public class HandTest {
         assertEquals(CardNumber.SEVEN, hand.getRemainHand().getCards()
                 .get(hand.getRemainHand().size() - 1).getNumber());
     }
+
+    @Test
+    public void should_return_level_0_and_ace_SEVEN_and_remain_hand_empty_when_given_2D_5S_3D_7S_6H_and_cal_hand_power() {
+        String given = "2D 5S 3D 7S 6H";
+        Hand hand = PokerHand.getHandByString(given).get(0);
+
+        hand.calHandPower();
+
+        assertEquals(0, hand.getRemainHand().size());
+        assertEquals(CardNumber.SEVEN, hand.getPower().getAce().getNumber());
+        assertEquals(0, hand.getPower().getLevel());
+    }
 }

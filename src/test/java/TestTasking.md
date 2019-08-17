@@ -69,3 +69,7 @@
     4. threeOfAKind
         - input: 2D 2H 2S 5H 7S
         - output: 5H 7S
+5. calHandPower
+    1. high card
+        - input: 2D 5S 3D 7S 6H
+        - output: {ace: SEVEN, level: 0, remainHand:[]}

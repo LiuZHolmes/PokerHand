@@ -117,4 +117,7 @@ public class Hand {
         remainHand.sort();
         setRemainHand(remainHand);
     }
+
+    public void calHandPower() {
+    }
 }
