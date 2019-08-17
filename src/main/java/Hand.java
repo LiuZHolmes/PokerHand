@@ -97,6 +97,12 @@ public class Hand {
     }
 
     public void calRemainHand() {
-        setRemainHand(new Hand(new ArrayList<>()));
+        Hand remainHand = new Hand(new ArrayList<>());
+        final Power power = getPower();
+        if (power.getLevel() == 1)
+            getCards().stream().filter(x -> !x.getNumber().equals(power.getAce().getNumber()))
+                .forEach(x -> remainHand.getCards().add(x));
+        remainHand.sort();
+        setRemainHand(remainHand);
     }
 }

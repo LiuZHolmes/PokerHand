@@ -5,8 +5,7 @@ import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class HandTest {
     @Test
@@ -154,7 +153,7 @@ public class HandTest {
 
     @Test
     public void should_return_5S_6H_7S_when_given_2D_2H_5S_6H_7S_and_cal_remain_hand() {
-        Hand hand = mock(Hand.class);
+        Hand hand = spy(new Hand(new ArrayList<>()));
         when(hand.getCards()).thenReturn(new ArrayList<>(Arrays.asList(PokerHand.getCardByString("2D"),
                 PokerHand.getCardByString("2H"),
                 PokerHand.getCardByString("5S"),
