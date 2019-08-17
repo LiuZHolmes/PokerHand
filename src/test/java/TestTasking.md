@@ -29,6 +29,9 @@
     3. tryTwoPairs
         - input: 2D 2H 5S 5H 7S
         - output: {ace: FIVE, level: 2}
+    4. tryThreeOfAKind
+        - input: 2D 2H 2S 5H 7S
+        - output: {ace: TWO, level: 3}
 2. tryPair
     1. not match
         - input: 2D 3D 5S 6H 7S
