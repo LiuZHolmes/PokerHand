@@ -66,3 +66,6 @@
     3. twoPairs
         - input: 2D 2H 5S 5H 7S
         - output: 7S
+    4. threeOfAKind
+        - input: 2D 2H 2S 5H 7S
+        - output: 5H 7S
