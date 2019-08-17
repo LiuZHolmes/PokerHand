@@ -88,6 +88,14 @@ public class PokerHand {
     }
 
     public static int compareHand(Hand hand, Hand secondHand) {
-        return 0;
+        final int levelResult = compareLevel(hand.getPower().getLevel(),secondHand.getPower().getLevel());
+        if (levelResult != 0) return levelResult;
+        final int aceResult = compareAce(hand.getPower().getAce(),secondHand.getPower().getAce());
+        if (aceResult != 0) return aceResult;
+        if (hand.getPower().getLevel() == PowerLevel.TWOPAIRS) {
+            final int secondAceResult = compareAce(hand.getPower().getSecondAce(),secondHand.getPower().getSecondAce());
+            if (secondAceResult != 0) return secondAceResult;
+        }
+        return compareRemainHand(hand.getRemainHand(),secondHand.getRemainHand());
     }
 }

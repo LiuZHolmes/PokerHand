@@ -112,6 +112,8 @@ public class PokerHandTest {
     public void should_return_negative_when_given_2D_3D_4D_5D_7S_and_7D_8D_9D_JD_QS() {
         Hand hand = PokerHand.getHandByString("2D 3D 4D 5D 7S").get(0);
         Hand secondHand = PokerHand.getHandByString("7D 8D 9D JD QS").get(0);
+        hand.calHandPower();
+        secondHand.calHandPower();
 
         final int result = PokerHand.compareHand(hand, secondHand);
 
