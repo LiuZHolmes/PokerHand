@@ -55,7 +55,7 @@ public class Hand {
         else if (tryPair() != null) setPower(tryPair());
         else {
             power.setAce(getCards().get(size() - 1));
-            power.setLevel(0);
+            power.setLevel(PowerLevel.HIGHCARD);
         }
     }
 
@@ -71,7 +71,7 @@ public class Hand {
         ArrayList<Map.Entry<CardNumber, Long>> list = countCards();
         final Map.Entry<CardNumber, Long> item = list.get(list.size() - 1);
         if (item.getValue() == 2L) {
-            return new Power(new Card(CardType.SPAED, item.getKey()), 1);
+            return new Power(new Card(CardType.SPAED, item.getKey()), PowerLevel.PAIR);
         }
         return null;
     }
@@ -84,7 +84,7 @@ public class Hand {
         final Map.Entry<CardNumber, Long> secondAceItem = item.getKey().compareTo(secondItem.getKey()) < 0 ? item : secondItem;
         if (item.getValue() == 2L && secondItem.getValue() == 2L) {
             return new Power(new Card(CardType.SPAED, aceItem.getKey()),
-                    new Card(CardType.SPAED, secondAceItem.getKey()), 2);
+                    new Card(CardType.SPAED, secondAceItem.getKey()), PowerLevel.TWOPAIRS);
         }
         return null;
     }
@@ -93,7 +93,7 @@ public class Hand {
         ArrayList<Map.Entry<CardNumber, Long>> list = countCards();
         final Map.Entry<CardNumber, Long> item = list.get(list.size() - 1);
         if (item.getValue() == 3L) {
-            return new Power(new Card(CardType.SPAED, item.getKey()), 3);
+            return new Power(new Card(CardType.SPAED, item.getKey()), PowerLevel.THREEOFAKIND);
         }
         return null;
     }
@@ -102,9 +102,9 @@ public class Hand {
         Hand remainHand = new Hand(new ArrayList<>());
         final Power power = getPower();
         switch (power.getLevel()) {
-            case 0:
+            case HIGHCARD:
                 break;
-            case 2:
+            case TWOPAIRS:
                 getCards().stream().filter(x -> !x.getNumber().equals(power.getAce().getNumber())
                         && !x.getNumber().equals(power.getSecondAce().getNumber()))
                         .forEach(x -> remainHand.getCards().add(x));

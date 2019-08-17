@@ -5,13 +5,13 @@ public class Power {
     public Power() {
     }
 
-    public Power(Card ace, int level) {
+    public Power(Card ace, PowerLevel level) {
         this.ace = ace;
         this.level = level;
         this.remainCard = new ArrayList<>();
     }
 
-    public Power(Card ace, Card secondAce, int level) {
+    public Power(Card ace, Card secondAce, PowerLevel level) {
         this.ace = ace;
         this.secondAce = secondAce;
         this.level = level;
@@ -34,11 +34,11 @@ public class Power {
         this.secondAce = secondAce;
     }
 
-    public int getLevel() {
+    public PowerLevel getLevel() {
         return level;
     }
 
-    public void setLevel(int level) {
+    public void setLevel(PowerLevel level) {
         this.level = level;
     }
 
@@ -52,7 +52,7 @@ public class Power {
 
     public Card ace;
     public Card secondAce;
-    public int level;
+    public PowerLevel level;
     public List<Card> remainCard;
 
 }

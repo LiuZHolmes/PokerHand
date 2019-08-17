@@ -14,6 +14,9 @@
 5. getHandByCards
     - input: "2D 3D 4D 5D 7S 7D 8D 9D JD QS"
     - output: [Hand]
+6. compareLevel
+    - input: HIGHCARD PAIR
+    - output: -1
  ---
 #### Hand
 1. sortHand

@@ -24,57 +24,57 @@ public class HandTest {
     }
 
     @Test
-    public void should_return_level_0_and_ace_SEVEN_when_given_2D_3D_5S_6H_7S_and_cal_hande_level_and_ace() {
+    public void should_return_level_HIGHCARD_and_ace_SEVEN_when_given_2D_3D_5S_6H_7S_and_cal_hande_level_and_ace() {
         String given = "2D 3D 5S 6H 7S";
         Hand hand = PokerHand.getHandByString(given).get(0);
 
         hand.calHandLevelAndAce();
 
-        assertEquals(0, hand.getPower().getLevel());
+        assertEquals(PowerLevel.HIGHCARD, hand.getPower().getLevel());
         assertEquals(CardNumber.SEVEN, hand.getPower().getAce().getNumber());
     }
 
     @Test
-    public void should_return_level_0_and_ace_SEVEN_when_given_2D_5S_3D_7S_6H_and_cal_hande_level_and_ace() {
+    public void should_return_level_HIGHCARD_and_ace_SEVEN_when_given_2D_5S_3D_7S_6H_and_cal_hande_level_and_ace() {
         String given = "2D 5S 3D 7S 6H";
         Hand hand = PokerHand.getHandByString(given).get(0);
 
         hand.calHandLevelAndAce();
 
-        assertEquals(0, hand.getPower().getLevel());
+        assertEquals(PowerLevel.HIGHCARD, hand.getPower().getLevel());
         assertEquals(CardNumber.SEVEN, hand.getPower().getAce().getNumber());
     }
 
     @Test
-    public void should_return_level_1_and_ace_TWO_when_given_2D_2H_5S_6H_7S_and_cal_hande_level_and_ace() {
+    public void should_return_level_PAIR_and_ace_TWO_when_given_2D_2H_5S_6H_7S_and_cal_hande_level_and_ace() {
         String given = "2D 2H 5S 6H 7S";
         Hand hand = PokerHand.getHandByString(given).get(0);
 
         hand.calHandLevelAndAce();
 
-        assertEquals(1, hand.getPower().getLevel());
+        assertEquals(PowerLevel.PAIR, hand.getPower().getLevel());
         assertEquals(CardNumber.TWO, hand.getPower().getAce().getNumber());
     }
 
     @Test
-    public void should_return_level_2_and_ace_FIVE_when_given_2D_2H_5S_5H_7S_and_cal_hande_level_and_ace() {
+    public void should_return_level_TWOPAIRS_and_ace_FIVE_when_given_2D_2H_5S_5H_7S_and_cal_hande_level_and_ace() {
         String given = "2D 2H 5S 5H 7S";
         Hand hand = PokerHand.getHandByString(given).get(0);
 
         hand.calHandLevelAndAce();
 
-        assertEquals(2, hand.getPower().getLevel());
+        assertEquals(PowerLevel.TWOPAIRS, hand.getPower().getLevel());
         assertEquals(CardNumber.FIVE, hand.getPower().getAce().getNumber());
     }
 
     @Test
-    public void should_return_level_3_and_ace_TWO_when_given_2D_2H_2S_5H_7S_and_cal_hande_level_and_ace() {
+    public void should_return_level_THREEOFAKIND_and_ace_TWO_when_given_2D_2H_2S_5H_7S_and_cal_hande_level_and_ace() {
         String given = "2D 2H 2S 5H 7S";
         Hand hand = PokerHand.getHandByString(given).get(0);
 
         hand.calHandLevelAndAce();
 
-        assertEquals(3, hand.getPower().getLevel());
+        assertEquals(PowerLevel.THREEOFAKIND, hand.getPower().getLevel());
         assertEquals(CardNumber.TWO, hand.getPower().getAce().getNumber());
     }
 
@@ -89,13 +89,13 @@ public class HandTest {
     }
 
     @Test
-    public void should_return_level_1_and_ace_TWO_when_given_2D_2H_5S_6H_7S_and_try_pair() {
+    public void should_return_level_PAIR_and_ace_TWO_when_given_2D_2H_5S_6H_7S_and_try_pair() {
         String given = "2D 2H 5S 6H 7S";
         Hand hand = PokerHand.getHandByString(given).get(0);
 
         Power power = hand.tryPair();
 
-        assertEquals(1, power.getLevel());
+        assertEquals(PowerLevel.PAIR, power.getLevel());
         assertEquals(CardNumber.TWO, power.getAce().getNumber());
     }
 
@@ -110,13 +110,13 @@ public class HandTest {
     }
 
     @Test
-    public void should_return_level_2_and_ace_FIVE_and_second_ace_TWO_when_given_2D_2H_5S_5H_7S_and_try_two_pairs() {
+    public void should_return_level_TWOPAIRS_and_ace_FIVE_and_second_ace_TWO_when_given_2D_2H_5S_5H_7S_and_try_two_pairs() {
         String given = "2D 2H 5S 5H 7S";
         Hand hand = PokerHand.getHandByString(given).get(0);
 
         Power power = hand.tryTwoPairs();
 
-        assertEquals(2, power.getLevel());
+        assertEquals(PowerLevel.TWOPAIRS, power.getLevel());
         assertEquals(CardNumber.FIVE, power.getAce().getNumber());
         assertEquals(CardNumber.TWO, power.getSecondAce().getNumber());
     }
@@ -132,20 +132,25 @@ public class HandTest {
     }
 
     @Test
-    public void should_return_level_3_and_ace_TWO_when_given_2D_2H_2S_5H_7S_and_try_three_of_a_kind() {
+    public void should_return_level_THREEOFAKIND_and_ace_TWO_when_given_2D_2H_2S_5H_7S_and_try_three_of_a_kind() {
         String given = "2D 2H 2S 5H 7S";
         Hand hand = PokerHand.getHandByString(given).get(0);
 
         Power power = hand.tryThreeOfAKind();
 
-        assertEquals(3, power.getLevel());
+        assertEquals(PowerLevel.THREEOFAKIND, power.getLevel());
         assertEquals(CardNumber.TWO, power.getAce().getNumber());
     }
 
     @Test
     public void should_return_empty_list_when_given_2D_3D_5S_6H_7S_and_cal_remain_hand() {
-        String given = "2D 3D 5S 6H 7S";
-        Hand hand = PokerHand.getHandByString(given).get(0);
+        Hand hand = spy(new Hand(new ArrayList<>()));
+        when(hand.getCards()).thenReturn(new ArrayList<>(Arrays.asList(PokerHand.getCardByString("2D"),
+                PokerHand.getCardByString("3D"),
+                PokerHand.getCardByString("5S"),
+                PokerHand.getCardByString("6H"),
+                PokerHand.getCardByString("7S"))));
+        when(hand.getPower()).thenReturn(new Power(PokerHand.getCardByString("7S"), PowerLevel.HIGHCARD));
 
         hand.calRemainHand();
 
@@ -160,7 +165,7 @@ public class HandTest {
                 PokerHand.getCardByString("5S"),
                 PokerHand.getCardByString("6H"),
                 PokerHand.getCardByString("7S"))));
-        when(hand.getPower()).thenReturn(new Power(PokerHand.getCardByString("2H"), 1));
+        when(hand.getPower()).thenReturn(new Power(PokerHand.getCardByString("2H"), PowerLevel.PAIR));
 
         hand.calRemainHand();
 
@@ -178,7 +183,7 @@ public class HandTest {
                 PokerHand.getCardByString("5H"),
                 PokerHand.getCardByString("7S"))));
         when(hand.getPower()).thenReturn(new Power(PokerHand.getCardByString("5H"),
-                PokerHand.getCardByString("2H"), 2));
+                PokerHand.getCardByString("2H"), PowerLevel.TWOPAIRS));
 
         hand.calRemainHand();
 
@@ -195,7 +200,7 @@ public class HandTest {
                 PokerHand.getCardByString("2S"),
                 PokerHand.getCardByString("5H"),
                 PokerHand.getCardByString("7S"))));
-        when(hand.getPower()).thenReturn(new Power(PokerHand.getCardByString("2S"),3));
+        when(hand.getPower()).thenReturn(new Power(PokerHand.getCardByString("2S"),PowerLevel.THREEOFAKIND));
 
         hand.calRemainHand();
 
@@ -205,7 +210,7 @@ public class HandTest {
     }
 
     @Test
-    public void should_return_level_0_and_ace_SEVEN_and_remain_hand_empty_when_given_2D_5S_3D_7S_6H_and_cal_hand_power() {
+    public void should_return_level_HIGHCARD_and_ace_SEVEN_and_remain_hand_empty_when_given_2D_5S_3D_7S_6H_and_cal_hand_power() {
         String given = "2D 5S 3D 7S 6H";
         Hand hand = PokerHand.getHandByString(given).get(0);
 
@@ -213,6 +218,6 @@ public class HandTest {
 
         assertEquals(0, hand.getRemainHand().size());
         assertEquals(CardNumber.SEVEN, hand.getPower().getAce().getNumber());
-        assertEquals(0, hand.getPower().getLevel());
+        assertEquals(PowerLevel.HIGHCARD, hand.getPower().getLevel());
     }
 }
