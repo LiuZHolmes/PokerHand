@@ -80,6 +80,10 @@ public class PokerHand {
     }
 
     public static int compareRemainHand(Hand remainHand, Hand secondRemainHand) {
-        return -1;
+        for (int i = remainHand.size() - 1; i >= 0 ; i--) {
+            final int result = compareCard(remainHand.getCards().get(i),secondRemainHand.getCards().get(i));
+            if (result != 0) return result;
+        }
+        return 0;
     }
 }

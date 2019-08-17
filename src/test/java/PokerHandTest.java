@@ -84,10 +84,19 @@ public class PokerHandTest {
     @Test
     public void should_return_negative_when_given_2D_3D_5S_6H_and_2D_4D_5S_6H() {
         Hand remainHand = PokerHand.getHandByString("2D 3D 5S 6H").get(0);
-        Hand secondRemainHand = PokerHand.getHandByString("2D 3D 5S 6H").get(0);
+        Hand secondRemainHand = PokerHand.getHandByString("2D 4D 5S 6H").get(0);
         final int result = PokerHand.compareRemainHand(remainHand, secondRemainHand);
 
         assertTrue(result < 0);
+    }
+
+    @Test
+    public void should_return_negative_when_given_2D_4D_5S_6H_and_2D_3D_5S_6H() {
+        Hand remainHand = PokerHand.getHandByString("2D 4D 5S 6H").get(0);
+        Hand secondRemainHand = PokerHand.getHandByString("2D 3D 5S 6H").get(0);
+        final int result = PokerHand.compareRemainHand(remainHand, secondRemainHand);
+
+        assertTrue(result > 0);
     }
 
     @Test

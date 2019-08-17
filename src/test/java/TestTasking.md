@@ -29,6 +29,9 @@
     1. 
         - input: [2D 3D 5S 6H] [2D 4D 5S 6H]
         - output: negative
+    1. 
+        - input: [2D 4D 5S 6H] [2D 3D 5S 6H] 
+        - output: positive
  ---
 #### Hand
 1. sortHand
