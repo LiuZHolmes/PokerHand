@@ -5,50 +5,50 @@ import static java.util.Comparator.*;
 
 public class Hand {
 
-    public Power power;
+    private Power power;
 
     List<Card> cards;
 
-    Hand remainHand;
+    private Hand remainHand;
 
     public Hand(List<Card> cards) {
         power = new Power();
         this.cards = cards;
     }
 
-    public int size() {
+    int size() {
         return getCards().size();
     }
 
-    public void sort() {
+    void sort() {
         setCards(getCards().stream().sorted(comparing(Card::getNumber)).collect(Collectors.toList()));
     }
 
-    public Power getPower() {
+    Power getPower() {
         return power;
     }
 
-    public void setPower(Power power) {
+    private void setPower(Power power) {
         this.power = power;
     }
 
-    public Hand getRemainHand() {
+    Hand getRemainHand() {
         return remainHand;
     }
 
-    public void setRemainHand(Hand remainHand) {
+    private void setRemainHand(Hand remainHand) {
         this.remainHand = remainHand;
     }
 
-    public List<Card> getCards() {
+    List<Card> getCards() {
         return cards;
     }
 
-    public void setCards(List<Card> cards) {
+    private void setCards(List<Card> cards) {
         this.cards = cards;
     }
 
-    public void calHandLevelAndAce() {
+    void calHandLevelAndAce() {
         sort();
         if (tryThreeOfAKind() != null) setPower(tryThreeOfAKind());
         else if (tryTwoPairs() != null) setPower(tryTwoPairs());
@@ -67,7 +67,7 @@ public class Hand {
         return list;
     }
 
-    public Power tryPair() {
+    Power tryPair() {
         ArrayList<Map.Entry<CardNumber, Long>> list = countCards();
         final Map.Entry<CardNumber, Long> item = list.get(list.size() - 1);
         if (item.getValue() == 2L) {
@@ -76,7 +76,7 @@ public class Hand {
         return null;
     }
 
-    public Power tryTwoPairs() {
+    Power tryTwoPairs() {
         ArrayList<Map.Entry<CardNumber, Long>> list = countCards();
         final Map.Entry<CardNumber, Long> item = list.get(list.size() - 1);
         final Map.Entry<CardNumber, Long> secondItem = list.get(list.size() - 2);
@@ -89,7 +89,7 @@ public class Hand {
         return null;
     }
 
-    public Power tryThreeOfAKind() {
+    Power tryThreeOfAKind() {
         ArrayList<Map.Entry<CardNumber, Long>> list = countCards();
         final Map.Entry<CardNumber, Long> item = list.get(list.size() - 1);
         if (item.getValue() == 3L) {
@@ -98,7 +98,7 @@ public class Hand {
         return null;
     }
 
-    public void calRemainHand() {
+    void calRemainHand() {
         Hand remainHand = new Hand(new ArrayList<>());
         final Power power = getPower();
         switch (power.getLevel()) {
@@ -118,7 +118,7 @@ public class Hand {
         setRemainHand(remainHand);
     }
 
-    public void calHandPower() {
+    void calHandPower() {
         sort();
         calHandLevelAndAce();
         calRemainHand();

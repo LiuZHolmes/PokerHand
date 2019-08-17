@@ -10,13 +10,13 @@ public class PokerHand {
         return getWinner(compareHand(hands.get(0), hands.get(1)));
     }
 
-    public static Card getCardByString(String given) {
+    static Card getCardByString(String given) {
         String number = given.substring(0, 1);
         String type = given.substring(1, 2);
         return new Card(getCardTypeByString(type), getCardNumberByString(number));
     }
 
-    public static CardNumber getCardNumberByString(String given) {
+    static CardNumber getCardNumberByString(String given) {
         if ("2".equals(given)) return CardNumber.TWO;
         if ("3".equals(given)) return CardNumber.THREE;
         if ("4".equals(given)) return CardNumber.FOUR;
@@ -33,7 +33,7 @@ public class PokerHand {
         return null;
     }
 
-    public static CardType getCardTypeByString(String given) {
+    static CardType getCardTypeByString(String given) {
         if ("D".equals(given)) return CardType.DIAMOND;
         if ("S".equals(given)) return CardType.SPAED;
         if ("H".equals(given)) return CardType.HEART;
@@ -41,13 +41,13 @@ public class PokerHand {
         return null;
     }
 
-    public static Hand getAHandBy5Cards(List<Card> cards) {
+    static Hand getAHandBy5Cards(List<Card> cards) {
         if (cards.size() == 5)
             return new Hand(cards);
         return null;
     }
 
-    public static List<Hand> getHandByString(String given) {
+    static List<Hand> getHandByString(String given) {
         List<Card> cards = Arrays.stream(given.split(" "))
                 .map(PokerHand::getCardByString).collect(Collectors.toList());
         List<Hand> hands = new ArrayList<>();
@@ -60,19 +60,19 @@ public class PokerHand {
         return hands;
     }
 
-    public static int compareLevel(PowerLevel level, PowerLevel secondLevel) {
+    static int compareLevel(PowerLevel level, PowerLevel secondLevel) {
         return level.compareTo(secondLevel);
     }
 
-    public static int compareAce(Card card, Card secondCard) {
+    static int compareAce(Card card, Card secondCard) {
         return compareCard(card, secondCard);
     }
 
-    public static int compareCard(Card card, Card secondCard) {
+    private static int compareCard(Card card, Card secondCard) {
         return card.getNumber().compareTo(secondCard.getNumber());
     }
 
-    public static int compareRemainHand(Hand remainHand, Hand secondRemainHand) {
+    static int compareRemainHand(Hand remainHand, Hand secondRemainHand) {
         for (int i = remainHand.size() - 1; i >= 0; i--) {
             final int result = compareCard(remainHand.getCards().get(i), secondRemainHand.getCards().get(i));
             if (result != 0) return result;
@@ -80,7 +80,7 @@ public class PokerHand {
         return 0;
     }
 
-    public static int compareHand(Hand hand, Hand secondHand) {
+    static int compareHand(Hand hand, Hand secondHand) {
         final int levelResult = compareLevel(hand.getPower().getLevel(), secondHand.getPower().getLevel());
         if (levelResult != 0) return levelResult;
         final int aceResult = compareAce(hand.getPower().getAce(), secondHand.getPower().getAce());
@@ -92,7 +92,7 @@ public class PokerHand {
         return compareRemainHand(hand.getRemainHand(), secondHand.getRemainHand());
     }
 
-    public static String getWinner(int given) {
+    static String getWinner(int given) {
         if (given > 0) return Winner.PLAYER_1_WINS;
         else if (given < 0) return Winner.PLAYER_2_WINS;
         return Winner.TIED;
