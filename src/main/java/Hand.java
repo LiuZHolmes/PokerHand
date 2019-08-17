@@ -77,4 +77,8 @@ public class Hand {
         }
         return null;
     }
+
+    public Hand calRemainHand() {
+        return null;
+    }
 }

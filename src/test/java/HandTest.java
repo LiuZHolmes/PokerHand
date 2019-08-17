@@ -139,4 +139,14 @@ public class HandTest {
         assertEquals(3, power.getLevel());
         assertEquals(CardNumber.TWO, power.getAce().getNumber());
     }
+
+    @Test
+    public void should_return_empty_list_when_given_2D_3D_5S_6H_7S_and_cal_remain_hand() {
+        String given = "2D 3D 5S 6H 7S";
+        Hand hand = PokerHand.getHandByString(given).get(0);
+
+        Hand remainHand = hand.calRemainHand();
+
+        assertEquals(0, remainHand.size());
+    }
 }
