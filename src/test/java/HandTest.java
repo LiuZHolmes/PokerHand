@@ -29,8 +29,8 @@ public class HandTest {
 
         hand.calHandLevelAndAce();
 
-        assertEquals(0, hand.power.level);
-        assertEquals(CardNumber.SEVEN, hand.power.ace.getNumber());
+        assertEquals(0, hand.getPower().getLevel());
+        assertEquals(CardNumber.SEVEN, hand.getPower().getAce().getNumber());
     }
 
     @Test
@@ -40,8 +40,8 @@ public class HandTest {
 
         hand.calHandLevelAndAce();
 
-        assertEquals(0, hand.power.level);
-        assertEquals(CardNumber.SEVEN, hand.power.ace.getNumber());
+        assertEquals(0, hand.getPower().getLevel());
+        assertEquals(CardNumber.SEVEN, hand.getPower().getAce().getNumber());
     }
 
     @Test
@@ -51,8 +51,8 @@ public class HandTest {
 
         hand.calHandLevelAndAce();
 
-        assertEquals(1, hand.power.level);
-        assertEquals(CardNumber.TWO, hand.power.ace.getNumber());
+        assertEquals(1, hand.getPower().getLevel());
+        assertEquals(CardNumber.TWO, hand.getPower().getAce().getNumber());
     }
 
     @Test
@@ -62,8 +62,8 @@ public class HandTest {
 
         hand.calHandLevelAndAce();
 
-        assertEquals(2, hand.power.level);
-        assertEquals(CardNumber.FIVE, hand.power.ace.getNumber());
+        assertEquals(2, hand.getPower().getLevel());
+        assertEquals(CardNumber.FIVE, hand.getPower().getAce().getNumber());
     }
 
     @Test
@@ -73,8 +73,8 @@ public class HandTest {
 
         hand.calHandLevelAndAce();
 
-        assertEquals(3, hand.power.level);
-        assertEquals(CardNumber.TWO, hand.power.ace.getNumber());
+        assertEquals(3, hand.getPower().getLevel());
+        assertEquals(CardNumber.TWO, hand.getPower().getAce().getNumber());
     }
 
     @Test
@@ -94,8 +94,8 @@ public class HandTest {
 
         Power power = hand.tryPair();
 
-        assertEquals(1, power.level);
-        assertEquals(CardNumber.TWO, power.ace.getNumber());
+        assertEquals(1, power.getLevel());
+        assertEquals(CardNumber.TWO, power.getAce().getNumber());
     }
 
     @Test
@@ -115,8 +115,8 @@ public class HandTest {
 
         Power power = hand.tryTwoPairs();
 
-        assertEquals(2, power.level);
-        assertEquals(CardNumber.FIVE, power.ace.getNumber());
+        assertEquals(2, power.getLevel());
+        assertEquals(CardNumber.FIVE, power.getAce().getNumber());
     }
 
     @Test
@@ -136,7 +136,7 @@ public class HandTest {
 
         Power power = hand.tryThreeOfAKind();
 
-        assertEquals(3, power.level);
-        assertEquals(CardNumber.TWO, power.ace.getNumber());
+        assertEquals(3, power.getLevel());
+        assertEquals(CardNumber.TWO, power.getAce().getNumber());
     }
 }

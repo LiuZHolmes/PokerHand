@@ -22,14 +22,22 @@ public class Hand {
         cards = cards.stream().sorted(comparing(Card::getNumber)).collect(Collectors.toList());
     }
 
+    public Power getPower() {
+        return power;
+    }
+
+    public void setPower(Power power) {
+        this.power = power;
+    }
+
     public void calHandLevelAndAce() {
         sort();
-        if (tryThreeOfAKind() != null) power = tryThreeOfAKind();
-        else if (tryTwoPairs() != null) power = tryTwoPairs();
-        else if (tryPair() != null) power = tryPair();
+        if (tryThreeOfAKind() != null) setPower(tryThreeOfAKind());
+        else if (tryTwoPairs() != null) setPower(tryTwoPairs());
+        else if (tryPair() != null) setPower(tryPair());
         else {
-            power.ace = cards.get(cards.size() - 1);
-            power.level = 0;
+            power.setAce(cards.get(cards.size() - 1));
+            power.setLevel(0);
         }
     }
 
