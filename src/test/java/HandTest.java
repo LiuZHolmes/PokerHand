@@ -30,7 +30,6 @@ public class HandTest {
 
         assertEquals(0,hand.power.level);
         assertEquals(CardNumber.SEVEN,hand.power.ace.getNumber());
-
     }
 
     @Test public void should_return_level_1_and_ace_TWO_when_given_2D_2H_5S_6H_7S() {
@@ -41,7 +40,6 @@ public class HandTest {
 
         assertEquals(1,hand.power.level);
         assertEquals(CardNumber.TWO,hand.power.ace.getNumber());
-
     }
 
     @Test public void should_return_level_2_and_ace_FIVE_when_given_2D_2H_5S_5H_7S() {
@@ -52,7 +50,6 @@ public class HandTest {
 
         assertEquals(2,hand.power.level);
         assertEquals(CardNumber.FIVE,hand.power.ace.getNumber());
-
     }
 
     @Test public void should_return_null_when_given_2D_3D_5S_6H_7S_and_try_pair() {
