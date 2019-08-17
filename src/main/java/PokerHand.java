@@ -100,6 +100,7 @@ public class PokerHand {
     }
 
     public static String getWinner(int given) {
-        return "Tied!";
+        if (given > 0) return Winner.PLAYER_1_WINS;
+        return Winner.TIED;
     }
 }
