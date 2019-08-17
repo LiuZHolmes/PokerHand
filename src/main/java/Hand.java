@@ -119,5 +119,8 @@ public class Hand {
     }
 
     public void calHandPower() {
+        sort();
+        calHandLevelAndAce();
+        calRemainHand();
     }
 }
