@@ -84,7 +84,7 @@ public class Hand {
         final Map.Entry<CardNumber, Long> secondAceItem = item.getKey().compareTo(secondItem.getKey()) < 0 ? item : secondItem;
         if (item.getValue() == 2L && secondItem.getValue() == 2L) {
             return new Power(new Card(CardType.SPAED, aceItem.getKey()),
-                    new Card(CardType.SPAED, secondAceItem.getKey()),2);
+                    new Card(CardType.SPAED, secondAceItem.getKey()), 2);
         }
         return null;
     }
@@ -102,13 +102,15 @@ public class Hand {
         Hand remainHand = new Hand(new ArrayList<>());
         final Power power = getPower();
         switch (power.getLevel()) {
-            case 1:
-                getCards().stream().filter(x -> !x.getNumber().equals(power.getAce().getNumber()))
-                        .forEach(x -> remainHand.getCards().add(x));
+            case 0:
                 break;
             case 2:
                 getCards().stream().filter(x -> !x.getNumber().equals(power.getAce().getNumber())
                         && !x.getNumber().equals(power.getSecondAce().getNumber()))
+                        .forEach(x -> remainHand.getCards().add(x));
+                break;
+            default:
+                getCards().stream().filter(x -> !x.getNumber().equals(power.getAce().getNumber()))
                         .forEach(x -> remainHand.getCards().add(x));
                 break;
         }
