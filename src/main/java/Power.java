@@ -11,12 +11,27 @@ public class Power {
         this.remainCard = new ArrayList<>();
     }
 
+    public Power(Card ace, Card secondAce, int level) {
+        this.ace = ace;
+        this.secondAce = secondAce;
+        this.level = level;
+        this.remainCard = new ArrayList<>();
+    }
+
     public Card getAce() {
         return ace;
     }
 
     public void setAce(Card ace) {
         this.ace = ace;
+    }
+
+    public Card getSecondAce() {
+        return secondAce;
+    }
+
+    public void setSecondAce(Card secondAce) {
+        this.secondAce = secondAce;
     }
 
     public int getLevel() {
@@ -36,6 +51,7 @@ public class Power {
     }
 
     public Card ace;
+    public Card secondAce;
     public int level;
     public List<Card> remainCard;
 

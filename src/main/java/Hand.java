@@ -99,9 +99,17 @@ public class Hand {
     public void calRemainHand() {
         Hand remainHand = new Hand(new ArrayList<>());
         final Power power = getPower();
-        if (power.getLevel() == 1)
-            getCards().stream().filter(x -> !x.getNumber().equals(power.getAce().getNumber()))
-                .forEach(x -> remainHand.getCards().add(x));
+        switch (power.getLevel()) {
+            case 1:
+                getCards().stream().filter(x -> !x.getNumber().equals(power.getAce().getNumber()))
+                        .forEach(x -> remainHand.getCards().add(x));
+                break;
+            case 2:
+                getCards().stream().filter(x -> !x.getNumber().equals(power.getAce().getNumber())
+                        && !x.getNumber().equals(power.getSecondAce().getNumber()))
+                        .forEach(x -> remainHand.getCards().add(x));
+                break;
+        }
         remainHand.sort();
         setRemainHand(remainHand);
     }

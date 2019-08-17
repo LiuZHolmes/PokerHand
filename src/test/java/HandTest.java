@@ -159,7 +159,7 @@ public class HandTest {
                 PokerHand.getCardByString("5S"),
                 PokerHand.getCardByString("6H"),
                 PokerHand.getCardByString("7S"))));
-        when(hand.getPower()).thenReturn(new Power(PokerHand.getCardByString("2H"),1));
+        when(hand.getPower()).thenReturn(new Power(PokerHand.getCardByString("2H"), 1));
 
         hand.calRemainHand();
 
@@ -176,7 +176,8 @@ public class HandTest {
                 PokerHand.getCardByString("5S"),
                 PokerHand.getCardByString("5H"),
                 PokerHand.getCardByString("7S"))));
-        when(hand.getPower()).thenReturn(new Power(PokerHand.getCardByString("5H"),2));
+        when(hand.getPower()).thenReturn(new Power(PokerHand.getCardByString("5H"),
+                PokerHand.getCardByString("2H"), 2));
 
         hand.calRemainHand();
 
