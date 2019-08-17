@@ -121,6 +121,18 @@ public class PokerHandTest {
     }
 
     @Test
+    public void should_return_positive_when_given_2D_2H_2S_JD_QS_and_3D_3H_4D_4S_7S() {
+        Hand hand = PokerHand.getHandByString("2D 2H 2S JD QS").get(0);
+        Hand secondHand = PokerHand.getHandByString("3D 3H 4D 4S 7S").get(0);
+        hand.calHandPower();
+        secondHand.calHandPower();
+
+        final int result = PokerHand.compareHand(hand, secondHand);
+
+        assertTrue(result > 0);
+    }
+
+    @Test
     public void should_return_player_2_wins_when_input_2D_3D_4D_5D_7S_7D_8D_9D_JD_QS() {
         List<String> cards = Arrays.asList("2D", "3D", "4D", "5D", "7S",
                 "7D", "8D", "9D", "JD", "QS");

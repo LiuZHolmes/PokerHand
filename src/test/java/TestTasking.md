@@ -35,7 +35,10 @@
 9. compareHand
     1. 
         - input: [2D 3D 4D 5D 7S] [7D 8D 9D JD QS]
-        - output: negatvie
+        - output: negative
+    2. 
+        - input: [2D 2H 2S JD QS] [3D 3H 4D 4S 7S]
+        - output: positive
  ---
 #### Hand
 1. sortHand
