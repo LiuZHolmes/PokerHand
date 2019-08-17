@@ -160,12 +160,11 @@ public class PokerHandTest {
     }
 
     @Test
-    public void should_return_player_2_wins_when_input_2D_3D_4D_5D_7S_7D_8D_9D_JD_QS() {
-        List<String> cards = Arrays.asList("2D", "3D", "4D", "5D", "7S",
-                "7D", "8D", "9D", "JD", "QS");
+    public void should_return_player_1_wins_when_given_2D_2H_2S_JD_QS_3D_3H_4D_4S_7S() {
+        final String given = "2D 2H 2S JD QS 3D 3H 4D 4S 7S";
 
-        String result = PokerHand.game(cards);
+        String result = PokerHand.game(given);
 
-        assertEquals("Player 2 wins", result);
+        assertEquals(Winner.PLAYER_1_WINS, result);
     }
 }

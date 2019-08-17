@@ -49,6 +49,9 @@
     3. 
         - input: negative
         - output: "Player 2 wins!"
+11. game
+    - input: "2D 2H 2S JD QS 3D 3H 4D 4S 7S"
+    - output: "Player 1 wins!"
  ---
 #### Hand
 1. sortHand
