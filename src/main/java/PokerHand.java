@@ -74,4 +74,8 @@ public class PokerHand {
     public static int compareAce(Card card, Card secondCard) {
         return card.getNumber().compareTo(secondCard.getNumber());
     }
+
+    public static int compareRemainHand(Hand remainHand, Hand secondRemainHand) {
+        return 0;
+    }
 }
