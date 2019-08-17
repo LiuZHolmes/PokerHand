@@ -17,11 +17,11 @@ public class Hand {
     }
 
     public int size() {
-        return cards.size();
+        return getCards().size();
     }
 
     public void sort() {
-        cards = cards.stream().sorted(comparing(Card::getNumber)).collect(Collectors.toList());
+        setCards(getCards().stream().sorted(comparing(Card::getNumber)).collect(Collectors.toList()));
     }
 
     public Power getPower() {
@@ -40,19 +40,27 @@ public class Hand {
         this.remainHand = remainHand;
     }
 
+    public List<Card> getCards() {
+        return cards;
+    }
+
+    public void setCards(List<Card> cards) {
+        this.cards = cards;
+    }
+
     public void calHandLevelAndAce() {
         sort();
         if (tryThreeOfAKind() != null) setPower(tryThreeOfAKind());
         else if (tryTwoPairs() != null) setPower(tryTwoPairs());
         else if (tryPair() != null) setPower(tryPair());
         else {
-            power.setAce(cards.get(cards.size() - 1));
+            power.setAce(getCards().get(size() - 1));
             power.setLevel(0);
         }
     }
 
     private ArrayList<Map.Entry<CardNumber, Long>> countCards() {
-        Map<CardNumber, Long> cardNumberCounts = cards.stream().map(Card::getNumber)
+        Map<CardNumber, Long> cardNumberCounts = getCards().stream().map(Card::getNumber)
                 .collect(Collectors.groupingBy(x -> x, Collectors.counting()));
         ArrayList<Map.Entry<CardNumber, Long>> list = new ArrayList<>(cardNumberCounts.entrySet());
         list.sort(comparing(Map.Entry::getValue));
