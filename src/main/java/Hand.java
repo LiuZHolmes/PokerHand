@@ -58,9 +58,12 @@ public class Hand {
         else if (tryTwoPairs() != null) setPower(tryTwoPairs());
         else if (tryPair() != null) setPower(tryPair());
         else {
-            power.setAce(getCards().get(size() - 1));
-            power.setLevel(PowerLevel.HIGHCARD);
+            setPower(tryHighCard());
         }
+    }
+
+    private Power tryHighCard() {
+        return new Power(getCards().get(size() - 1), PowerLevel.HIGHCARD);
     }
 
     private ArrayList<Map.Entry<CardNumber, Long>> countCards() {
