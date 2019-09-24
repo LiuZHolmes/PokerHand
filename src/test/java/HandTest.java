@@ -211,6 +211,18 @@ public class HandTest {
     }
 
     @Test
+    public void should_return_2D_3H_4S_5H_when_given_2D_3H_4S_5H_6S_and_cal_remain_hand() {
+        Hand hand = spy(PokerHand.getHandByString("2D 3H 4S 5H 6S").get(0));
+        when(hand.getPower()).thenReturn(new Power(PokerHand.getCardByString("6S"), PowerLevel.STRAIGHT));
+
+        hand.calRemainHand();
+
+        assertEquals(4, hand.getRemainHand().size());
+        assertEquals(CardNumber.FIVE, hand.getRemainHand().getCards()
+                .get(hand.getRemainHand().size() - 1).getNumber());
+    }
+
+    @Test
     public void should_return_level_HIGHCARD_and_ace_SEVEN_and_remain_hand_size_4_when_given_2D_5S_3D_7S_6H_and_cal_hand_power() {
         String given = "2D 5S 3D 7S 6H";
         Hand hand = PokerHand.getHandByString(given).get(0);

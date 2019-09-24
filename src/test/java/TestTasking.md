@@ -104,7 +104,7 @@
 4. calRemainHand
     1. high card
         - input: 2D 3D 5S 6H 7S
-        - output: [2D 3D 5S 6H]
+        - output: 2D 3D 5S 6H
     2. pair
         - input: 2D 2H 5S 6H 7S
         - output: 5S 6H 7S
@@ -114,6 +114,9 @@
     4. threeOfAKind
         - input: 2D 2H 2S 5H 7S
         - output: 5H 7S
+    4. straight
+        - input: 2D 3H 4S 5H 6S
+        - output: 2D 3H 4S 5H
 5. calHandPower
     1. high card
         - input: 2D 5S 3D 7S 6H
