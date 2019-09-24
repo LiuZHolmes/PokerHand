@@ -1,7 +1,9 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
-import static java.util.Comparator.*;
+import static java.util.Comparator.comparing;
 
 public class Hand {
 
@@ -95,6 +97,10 @@ public class Hand {
         if (item.getValue() == 3L) {
             return new Power(new Card(CardType.SPAED, item.getKey()), PowerLevel.THREEOFAKIND);
         }
+        return null;
+    }
+
+    Power tryStraight() {
         return null;
     }
 

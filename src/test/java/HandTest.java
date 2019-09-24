@@ -1,11 +1,9 @@
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.when;
 
 public class HandTest {
     @Test
@@ -140,6 +138,16 @@ public class HandTest {
 
         assertEquals(PowerLevel.THREEOFAKIND, power.getLevel());
         assertEquals(CardNumber.TWO, power.getAce().getNumber());
+    }
+
+    @Test
+    public void should_return_null_when_given_2D_3D_5S_6H_7S_and_try_straight() {
+        String given = "2D 3D 5S 6H 7S";
+        Hand hand = PokerHand.getHandByString(given).get(0);
+
+        Power power = hand.tryStraight();
+
+        assertNull(power);
     }
 
     @Test
