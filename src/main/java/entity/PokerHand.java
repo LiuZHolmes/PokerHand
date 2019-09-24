@@ -7,8 +7,10 @@ import constant.Winner;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class PokerHand {
     private PokerHand() {
@@ -66,11 +68,13 @@ public class PokerHand {
     }
 
     static int compareRemainHand(Hand remainHand, Hand secondRemainHand) {
-        for (int i = remainHand.size() - 1; i >= 0; i--) {
-            final int result = compareCard(remainHand.getCards().get(i), secondRemainHand.getCards().get(i));
-            if (result != 0) return result;
-        }
-        return 0;
+        return IntStream.rangeClosed(0, remainHand.size() - 1)
+                .boxed()
+                .sorted(Collections.reverseOrder())
+                .map(x -> compareCard(remainHand.getCards().get(x), secondRemainHand.getCards().get(x)))
+                .filter(x -> x != 0)
+                .findFirst()
+                .orElse(0);
     }
 
     static int compareHand(Hand hand, Hand secondHand) {
