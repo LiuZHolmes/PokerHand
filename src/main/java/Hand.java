@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static java.util.Comparator.comparing;
 
@@ -101,6 +102,11 @@ public class Hand {
     }
 
     Power tryStraight() {
+        if (IntStream
+                .range(1, getCards().size())
+                .allMatch(i -> getCards().get(i).getNumber().ordinal() - getCards().get(i - 1).getNumber().ordinal() == 1)) {
+            return new Power(getCards().get(size() - 1), PowerLevel.STRAIGHT);
+        }
         return null;
     }
 
