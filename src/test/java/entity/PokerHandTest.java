@@ -1,7 +1,11 @@
-import org.junit.Assert;
+package entity;
+
+import constant.CardNumber;
+import constant.CardType;
+import constant.PowerLevel;
+import constant.Winner;
 import org.junit.Test;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;

@@ -1,19 +1,19 @@
-#### PokerHand
+#### entity.PokerHand
 1. getCardNumberByString
     - input: "5"
-    - output: CardNumber.FIVE
+    - output: constant.CardNumber.FIVE
 2. getCardTypeByString
     - input: "D"
-    - output: CardType.Diamond
+    - output: constant.CardType.Diamond
 3. getCardByString
     - input: "5D"
     - output: Diamond FIVE
 4. getAHandBy5Cards
-    - input: [Card]
-    - output: Hand
+    - input: [entity.Card]
+    - output: entity.Hand
 5. getHandByCards
     - input: "2D 3D 4D 5D 7S 7D 8D 9D JD QS"
-    - output: [Hand]
+    - output: [entity.Hand]
 6. compareLevel
     1. 
         - input: HIGHCARD PAIR
@@ -53,7 +53,7 @@
     - input: "2D 2H 2S JD QS 3D 3H 4D 4S 7S"
     - output: "Player 1 wins!"
  ---
-#### Hand
+#### entity.Hand
 1. sortHand
     - input: 2D 4S 3D 6S 5H
     - output: 2D 3D 4S 5H 6S

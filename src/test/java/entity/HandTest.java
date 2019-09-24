@@ -1,8 +1,13 @@
+package entity;
+
+import constant.CardNumber;
+import constant.CardType;
+import constant.PowerLevel;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
-import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
 
 public class HandTest {
@@ -174,7 +179,7 @@ public class HandTest {
 
     @Test
     public void should_return_2D_3D_5S_6H_when_given_2D_3D_5S_6H_7S_and_cal_remain_hand() {
-        Hand hand = spy(PokerHand.getHandByString("2D 3D 5S 6H 7S").get(0));
+        Hand hand = Mockito.spy(PokerHand.getHandByString("2D 3D 5S 6H 7S").get(0));
         when(hand.getPower()).thenReturn(new Power(PokerHand.getCardByString("7S"), PowerLevel.HIGHCARD));
 
         hand.calRemainHand();
@@ -186,7 +191,7 @@ public class HandTest {
 
     @Test
     public void should_return_5S_6H_7S_when_given_2D_2H_5S_6H_7S_and_cal_remain_hand() {
-        Hand hand = spy(PokerHand.getHandByString("2D 2H 5S 6H 7S").get(0));
+        Hand hand = Mockito.spy(PokerHand.getHandByString("2D 2H 5S 6H 7S").get(0));
         when(hand.getPower()).thenReturn(new Power(PokerHand.getCardByString("2H"), PowerLevel.PAIR));
 
         hand.calRemainHand();
@@ -198,7 +203,7 @@ public class HandTest {
 
     @Test
     public void should_return_7S_when_given_2D_2H_5S_5H_7S_and_cal_remain_hand() {
-        Hand hand = spy(PokerHand.getHandByString("2D 2H 5S 5H 7S").get(0));
+        Hand hand = Mockito.spy(PokerHand.getHandByString("2D 2H 5S 5H 7S").get(0));
         when(hand.getPower()).thenReturn(new Power(PokerHand.getCardByString("5H"),
                 PokerHand.getCardByString("2H"), PowerLevel.TWOPAIRS));
 
@@ -211,7 +216,7 @@ public class HandTest {
 
     @Test
     public void should_return_5H_7S_when_given_2D_2H_2S_5H_7S_and_cal_remain_hand() {
-        Hand hand = spy(PokerHand.getHandByString("2D 2H 2S 5H 7S").get(0));
+        Hand hand = Mockito.spy(PokerHand.getHandByString("2D 2H 2S 5H 7S").get(0));
         when(hand.getPower()).thenReturn(new Power(PokerHand.getCardByString("2S"), PowerLevel.THREEOFAKIND));
 
         hand.calRemainHand();
@@ -223,7 +228,7 @@ public class HandTest {
 
     @Test
     public void should_return_2D_3H_4S_5H_when_given_2D_3H_4S_5H_6S_and_cal_remain_hand() {
-        Hand hand = spy(PokerHand.getHandByString("2D 3H 4S 5H 6S").get(0));
+        Hand hand = Mockito.spy(PokerHand.getHandByString("2D 3H 4S 5H 6S").get(0));
         when(hand.getPower()).thenReturn(new Power(PokerHand.getCardByString("6S"), PowerLevel.STRAIGHT));
 
         hand.calRemainHand();

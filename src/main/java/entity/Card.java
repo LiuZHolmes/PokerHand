@@ -1,3 +1,7 @@
+package entity;
+
+import constant.CardNumber;
+import constant.CardType;
 public class Card {
 
     private CardType type;

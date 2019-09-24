@@ -1,3 +1,7 @@
+package entity;
+
+import constant.PowerLevel;
+
 import java.util.ArrayList;
 import java.util.List;
 

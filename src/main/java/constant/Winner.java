@@ -1,3 +1,5 @@
+package constant;
+
 public class Winner {
     private Winner() {
     }

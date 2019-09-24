@@ -1,3 +1,5 @@
+package constant;
+
 public enum CardNumber {
     TWO,
     THREE,

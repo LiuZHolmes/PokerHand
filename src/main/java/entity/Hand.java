@@ -1,3 +1,9 @@
+package entity;
+
+import constant.CardNumber;
+import constant.CardType;
+import constant.PowerLevel;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
