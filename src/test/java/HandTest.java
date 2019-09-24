@@ -77,6 +77,17 @@ public class HandTest {
     }
 
     @Test
+    public void should_return_level_STRAIGHT_and_ace_SIX_when_given_2D_3H_4S_5H_6S_and_cal_hande_level_and_ace() {
+        String given = "2D 3H 4S 5H 6S";
+        Hand hand = PokerHand.getHandByString(given).get(0);
+
+        hand.calHandLevelAndAce();
+
+        assertEquals(PowerLevel.STRAIGHT, hand.getPower().getLevel());
+        assertEquals(CardNumber.SIX, hand.getPower().getAce().getNumber());
+    }
+
+    @Test
     public void should_return_null_when_given_2D_3D_5S_6H_7S_and_try_pair() {
         String given = "2D 3D 5S 6H 7S";
         Hand hand = PokerHand.getHandByString(given).get(0);

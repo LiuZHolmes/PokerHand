@@ -73,6 +73,9 @@
     5. threeOfAKind
         - input: 2D 2H 2S 5H 7S
         - output: {ace: TWO, level: 3}
+    5. tryStraight
+        - input: 2D 3H 4S 5H 6S
+        - output: {ace: SIX, level: 4}
 2. tryPair
     1. not match
         - input: 2D 3D 5S 6H 7S
