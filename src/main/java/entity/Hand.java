@@ -4,10 +4,7 @@ import constant.CardNumber;
 import constant.CardType;
 import constant.PowerLevel;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -61,9 +58,7 @@ public class Hand {
     void calHandLevelAndAce() {
         sort();
         final List<Supplier<Power>> tryDifferentPower = Arrays.asList(this::tryStraight, this::tryThreeOfAKind, this::tryTwoPairs, this::tryPair, this::tryHighCard);
-        for (int i = 0; i < tryDifferentPower.size() && getPower() == null; i++) {
-            setPower(tryDifferentPower.get(i).get());
-        }
+        setPower(tryDifferentPower.stream().map(Supplier::get).filter(Objects::nonNull).findFirst().orElse(null));
     }
 
     private Power tryHighCard() {
