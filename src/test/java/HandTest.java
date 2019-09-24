@@ -151,6 +151,17 @@ public class HandTest {
     }
 
     @Test
+    public void should_return_null_when_given_2D_3D_4S_5H_6S_and_try_straight() {
+        String given = "2D 3H 4S 5H 6S";
+        Hand hand = PokerHand.getHandByString(given).get(0);
+
+        Power power = hand.tryStraight();
+
+        assertEquals(PowerLevel.STRAIGHT, power.getLevel());
+        assertEquals(CardNumber.SIX, power.getAce().getNumber());
+    }
+
+    @Test
     public void should_return_2D_3D_5S_6H_when_given_2D_3D_5S_6H_7S_and_cal_remain_hand() {
         Hand hand = spy(PokerHand.getHandByString("2D 3D 5S 6H 7S").get(0));
         when(hand.getPower()).thenReturn(new Power(PokerHand.getCardByString("7S"), PowerLevel.HIGHCARD));
