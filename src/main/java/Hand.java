@@ -1,6 +1,8 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -15,7 +17,6 @@ public class Hand {
     private Hand remainHand;
 
     public Hand(List<Card> cards) {
-        power = new Power();
         this.cards = cards;
     }
 
@@ -53,12 +54,9 @@ public class Hand {
 
     void calHandLevelAndAce() {
         sort();
-        if (tryStraight() != null) setPower(tryStraight());
-        else if (tryThreeOfAKind() != null) setPower(tryThreeOfAKind());
-        else if (tryTwoPairs() != null) setPower(tryTwoPairs());
-        else if (tryPair() != null) setPower(tryPair());
-        else {
-            setPower(tryHighCard());
+        final List<Supplier<Power>> tryDifferentPower = Arrays.asList(this::tryStraight, this::tryThreeOfAKind, this::tryTwoPairs, this::tryPair, this::tryHighCard);
+        for (int i = 0; i < tryDifferentPower.size() && getPower() == null; i++) {
+            setPower(tryDifferentPower.get(i).get());
         }
     }
 
