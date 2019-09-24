@@ -112,21 +112,21 @@ public class Hand {
     }
 
     void calRemainHand() {
-        Hand remainHand = new Hand(new ArrayList<>());
-        final Power power = getPower();
-        switch (power.getLevel()) {
+        Hand hand = new Hand(new ArrayList<>());
+        final Power thisPower = getPower();
+        switch (thisPower.getLevel()) {
             case TWOPAIRS:
-                getCards().stream().filter(x -> !x.getNumber().equals(power.getAce().getNumber())
-                        && !x.getNumber().equals(power.getSecondAce().getNumber()))
-                        .forEach(x -> remainHand.getCards().add(x));
+                getCards().stream().filter(x -> !x.getNumber().equals(thisPower.getAce().getNumber())
+                        && !x.getNumber().equals(thisPower.getSecondAce().getNumber()))
+                        .forEach(x -> hand.getCards().add(x));
                 break;
             default:
-                getCards().stream().filter(x -> !x.getNumber().equals(power.getAce().getNumber()))
-                        .forEach(x -> remainHand.getCards().add(x));
+                getCards().stream().filter(x -> !x.getNumber().equals(thisPower.getAce().getNumber()))
+                        .forEach(x -> hand.getCards().add(x));
                 break;
         }
-        remainHand.sort();
-        setRemainHand(remainHand);
+        hand.sort();
+        setRemainHand(hand);
     }
 
     void calHandPower() {

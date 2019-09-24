@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class PokerHand {
+    private PokerHand() {
+    }
+
     static String game(String cards) {
         List<Hand> hands = getHandByString(cards);
         hands.forEach(Hand::calHandPower);
