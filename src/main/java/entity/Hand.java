@@ -82,12 +82,12 @@ public class Hand {
     }
 
     private Power tryHighCard() {
-        return new Power(getCards().get(size() - 1), PowerLevel.HIGHCARD);
+        return new Power(Util.getLastElementOfList(getCards()), PowerLevel.HIGHCARD);
     }
 
     Power tryPair() {
         ArrayList<Map.Entry<CardNumber, List<Card>>> list = countCards();
-        final Map.Entry<CardNumber, List<Card>> item = list.get(list.size() - 1);
+        final Map.Entry<CardNumber, List<Card>> item = Util.getLastElementOfList(list);
         if (item.getValue().size() == 2) {
             return new Power(Util.getLastElementOfList(item.getValue()), PowerLevel.PAIR);
         }
@@ -96,7 +96,7 @@ public class Hand {
 
     Power tryTwoPairs() {
         ArrayList<Map.Entry<CardNumber, List<Card>>> list = countCards();
-        final Map.Entry<CardNumber, List<Card>> aceItem = list.get(list.size() - 1);
+        final Map.Entry<CardNumber, List<Card>> aceItem = Util.getLastElementOfList(list);
         final Map.Entry<CardNumber, List<Card>> secondAceItem = list.get(list.size() - 2);
         if (aceItem.getValue().size() == 2 && secondAceItem.getValue().size() == 2) {
             return new Power(Util.getLastElementOfList(aceItem.getValue()),
@@ -107,7 +107,7 @@ public class Hand {
 
     Power tryThreeOfAKind() {
         ArrayList<Map.Entry<CardNumber, List<Card>>> list = countCards();
-        final Map.Entry<CardNumber, List<Card>> item = list.get(list.size() - 1);
+        final Map.Entry<CardNumber, List<Card>> item = Util.getLastElementOfList(list);
         if (item.getValue().size() == 3) {
             return new Power(Util.getLastElementOfList(item.getValue()), PowerLevel.THREEOFAKIND);
         }
@@ -118,7 +118,7 @@ public class Hand {
         if (IntStream
                 .range(1, getCards().size())
                 .allMatch(i -> getCards().get(i).getNumber().ordinal() - getCards().get(i - 1).getNumber().ordinal() == 1)) {
-            return new Power(getCards().get(size() - 1), PowerLevel.STRAIGHT);
+            return new Power(Util.getLastElementOfList(getCards()), PowerLevel.STRAIGHT);
         }
         return null;
     }

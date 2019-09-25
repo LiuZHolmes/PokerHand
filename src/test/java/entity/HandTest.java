@@ -1,5 +1,6 @@
 package entity;
 
+import common.Util;
 import constant.CardNumber;
 import constant.CardType;
 import constant.PowerLevel;
@@ -191,8 +192,7 @@ public class HandTest {
         hand.calRemainHand();
 
         assertEquals(4, hand.getRemainHand().size());
-        assertEquals(CardNumber.SIX, hand.getRemainHand().getCards()
-                .get(hand.getRemainHand().size() - 1).getNumber());
+        assertEquals(CardNumber.SIX, Util.getLastElementOfList(hand.getRemainHand().getCards()).getNumber());
     }
 
     @Test
@@ -203,8 +203,7 @@ public class HandTest {
         hand.calRemainHand();
 
         assertEquals(3, hand.getRemainHand().size());
-        assertEquals(CardNumber.SEVEN, hand.getRemainHand().getCards()
-                .get(hand.getRemainHand().size() - 1).getNumber());
+        assertEquals(CardNumber.SEVEN, Util.getLastElementOfList(hand.getRemainHand().getCards()).getNumber());
     }
 
     @Test
@@ -216,8 +215,7 @@ public class HandTest {
         hand.calRemainHand();
 
         assertEquals(1, hand.getRemainHand().size());
-        assertEquals(CardNumber.SEVEN, hand.getRemainHand().getCards()
-                .get(hand.getRemainHand().size() - 1).getNumber());
+        assertEquals(CardNumber.SEVEN, Util.getLastElementOfList(hand.getRemainHand().getCards()).getNumber());
     }
 
     @Test
@@ -228,8 +226,7 @@ public class HandTest {
         hand.calRemainHand();
 
         assertEquals(2, hand.getRemainHand().size());
-        assertEquals(CardNumber.SEVEN, hand.getRemainHand().getCards()
-                .get(hand.getRemainHand().size() - 1).getNumber());
+        assertEquals(CardNumber.SEVEN, Util.getLastElementOfList(hand.getRemainHand().getCards()).getNumber());
     }
 
     @Test
@@ -240,8 +237,7 @@ public class HandTest {
         hand.calRemainHand();
 
         assertEquals(4, hand.getRemainHand().size());
-        assertEquals(CardNumber.FIVE, hand.getRemainHand().getCards()
-                .get(hand.getRemainHand().size() - 1).getNumber());
+        assertEquals(CardNumber.FIVE, Util.getLastElementOfList(hand.getRemainHand().getCards()).getNumber());
     }
 
     @Test
