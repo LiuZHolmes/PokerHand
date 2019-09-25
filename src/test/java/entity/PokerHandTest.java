@@ -47,7 +47,7 @@ public class PokerHandTest {
     @Test
     public void should_return_hand_when_given_5_cards() {
         List<Card> cards = IntStream.rangeClosed(1, 5).boxed()
-                .map(x -> new Card(CardType.SPAED, CardNumber.ACE)).collect(Collectors.toList());
+                .map(x -> new Card(CardType.SPADE, CardNumber.ACE)).collect(Collectors.toList());
 
         Hand hand = PokerHand.getAHandBy5Cards(cards);
 

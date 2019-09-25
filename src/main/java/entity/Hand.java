@@ -100,8 +100,8 @@ public class Hand {
         final Map.Entry<CardNumber, List<Card>> aceItem = list.get(list.size() - 1);
         final Map.Entry<CardNumber, List<Card>> secondAceItem = list.get(list.size() - 2);
         if (aceItem.getValue().size() == 2 && secondAceItem.getValue().size() == 2) {
-            return new Power(new Card(CardType.SPAED, aceItem.getKey()),
-                    new Card(CardType.SPAED, secondAceItem.getKey()), PowerLevel.TWOPAIRS);
+            return new Power(new Card(CardType.SPADE, aceItem.getKey()),
+                    new Card(CardType.SPADE, secondAceItem.getKey()), PowerLevel.TWOPAIRS);
         }
         return null;
     }
@@ -110,7 +110,7 @@ public class Hand {
         ArrayList<Map.Entry<CardNumber, List<Card>>> list = countCards();
         final Map.Entry<CardNumber, List<Card>> item = list.get(list.size() - 1);
         if (item.getValue().size() == 3) {
-            return new Power(new Card(CardType.SPAED, item.getKey()), PowerLevel.THREEOFAKIND);
+            return new Power(new Card(CardType.SPADE, item.getKey()), PowerLevel.THREEOFAKIND);
         }
         return null;
     }

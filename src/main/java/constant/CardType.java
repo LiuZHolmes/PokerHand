@@ -6,7 +6,7 @@ public enum CardType {
     DIAMOND("D"),
     CLUB("C"),
     HEART("H"),
-    SPAED("S");
+    SPADE("S");
 
     String identify;
 
