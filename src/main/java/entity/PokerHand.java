@@ -59,11 +59,7 @@ public class PokerHand {
         return level.compareTo(secondLevel);
     }
 
-    static int compareAce(Card card, Card secondCard) {
-        return compareCard(card, secondCard);
-    }
-
-    private static int compareCard(Card card, Card secondCard) {
+    static int compareCard(Card card, Card secondCard) {
         return card.getNumber().compareTo(secondCard.getNumber());
     }
 
@@ -80,10 +76,10 @@ public class PokerHand {
     static int compareHand(Hand hand, Hand secondHand) {
         final int levelResult = compareLevel(hand.getPower().getLevel(), secondHand.getPower().getLevel());
         if (levelResult != 0) return levelResult;
-        final int aceResult = compareAce(hand.getPower().getAce(), secondHand.getPower().getAce());
+        final int aceResult = compareCard(hand.getPower().getAce(), secondHand.getPower().getAce());
         if (aceResult != 0) return aceResult;
         if (hand.getPower().getLevel() == PowerLevel.TWOPAIRS) {
-            final int secondAceResult = compareAce(hand.getPower().getSecondAce(), secondHand.getPower().getSecondAce());
+            final int secondAceResult = compareCard(hand.getPower().getSecondAce(), secondHand.getPower().getSecondAce());
             if (secondAceResult != 0) return secondAceResult;
         }
         return compareRemainHand(hand.getRemainHand(), secondHand.getRemainHand());

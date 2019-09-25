@@ -87,7 +87,7 @@ public class PokerHandTest {
     public void should_return_positive_when_given_5D_and_2S() {
         final Card card = PokerHand.getCardByString("5D");
         final Card secondCard = PokerHand.getCardByString("2S");
-        final int result = PokerHand.compareAce(card, secondCard);
+        final int result = PokerHand.compareCard(card, secondCard);
 
         assertTrue(result > 0);
     }
