@@ -102,8 +102,8 @@
         - input: 2D 3D 5S 6H 7S
         - output: null
     2. match
-        - input: 2D 3H 4S 5H 6S
-        - output: {ace: SIX, level: 4}
+        - input: 2D 3H 4S 5H 6D
+        - output: {ace: 6D, level: 4}
 4. calRemainHand
     1. high card
         - input: 2D 3D 5S 6H 7S
