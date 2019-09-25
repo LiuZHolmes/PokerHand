@@ -61,21 +61,27 @@ public class Hand {
         setPower(tryDifferentPower.stream().map(Supplier::get).filter(Objects::nonNull).findFirst().orElse(null));
     }
 
-    private Power tryHighCard() {
-        return new Power(getCards().get(size() - 1), PowerLevel.HIGHCARD);
+    interface Comparator {
+        int compare(Map.Entry<CardNumber, Long> o1, Map.Entry<CardNumber, Long> o2);
     }
+
+    private Comparator compareCount = (Map.Entry<CardNumber, Long> o1, Map.Entry<CardNumber, Long> o2) -> (int) (o1.getValue() - o2.getValue());
+
+    private Comparator compareCardNumber = (Map.Entry<CardNumber, Long> o1, Map.Entry<CardNumber, Long> o2) -> o1.getKey().compareTo(o2.getKey());
 
     private ArrayList<Map.Entry<CardNumber, Long>> countCards() {
         Map<CardNumber, Long> cardNumberCounts = getCards().stream().map(Card::getNumber)
                 .collect(Collectors.groupingBy(x -> x, Collectors.counting()));
         ArrayList<Map.Entry<CardNumber, Long>> list = new ArrayList<>(cardNumberCounts.entrySet());
-        list.sort(new Comparator<Map.Entry<CardNumber, Long>>() {
-            @Override
-            public int compare(Map.Entry<CardNumber, Long> o1, Map.Entry<CardNumber, Long> o2) {
-                return (int) (o1.getValue() - o2.getValue());
-            }
+        list.sort((o1, o2) -> {
+            List<Comparator> comparators = Arrays.asList(compareCount, compareCardNumber);
+            return comparators.stream().map(x -> x.compare(o1, o2)).filter(x -> x != 0).findFirst().orElse(0);
         });
         return list;
+    }
+
+    private Power tryHighCard() {
+        return new Power(getCards().get(size() - 1), PowerLevel.HIGHCARD);
     }
 
     Power tryPair() {
@@ -89,11 +95,9 @@ public class Hand {
 
     Power tryTwoPairs() {
         ArrayList<Map.Entry<CardNumber, Long>> list = countCards();
-        final Map.Entry<CardNumber, Long> item = list.get(list.size() - 1);
-        final Map.Entry<CardNumber, Long> secondItem = list.get(list.size() - 2);
-        final Map.Entry<CardNumber, Long> aceItem = item.getKey().compareTo(secondItem.getKey()) < 0 ? secondItem : item;
-        final Map.Entry<CardNumber, Long> secondAceItem = item.getKey().compareTo(secondItem.getKey()) < 0 ? item : secondItem;
-        if (item.getValue() == 2L && secondItem.getValue() == 2L) {
+        final Map.Entry<CardNumber, Long> aceItem = list.get(list.size() - 1);
+        final Map.Entry<CardNumber, Long> secondAceItem = list.get(list.size() - 2);
+        if (aceItem.getValue() == 2L && secondAceItem.getValue() == 2L) {
             return new Power(new Card(CardType.SPAED, aceItem.getKey()),
                     new Card(CardType.SPAED, secondAceItem.getKey()), PowerLevel.TWOPAIRS);
         }
