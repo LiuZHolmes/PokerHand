@@ -2,7 +2,6 @@ package entity;
 
 import common.Util;
 import constant.CardNumber;
-import constant.CardType;
 import constant.PowerLevel;
 
 import java.util.*;
@@ -110,7 +109,7 @@ public class Hand {
         ArrayList<Map.Entry<CardNumber, List<Card>>> list = countCards();
         final Map.Entry<CardNumber, List<Card>> item = list.get(list.size() - 1);
         if (item.getValue().size() == 3) {
-            return new Power(new Card(CardType.SPADE, item.getKey()), PowerLevel.THREEOFAKIND);
+            return new Power(Util.getLastElementOfList(item.getValue()), PowerLevel.THREEOFAKIND);
         }
         return null;
     }
