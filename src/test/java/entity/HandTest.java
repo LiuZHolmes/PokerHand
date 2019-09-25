@@ -61,7 +61,7 @@ public class HandTest {
     }
 
     @Test
-    public void should_return_level_TWOPAIRS_and_ace_5S_when_given_2D_2H_5S_5H_7S_and_cal_hande_level_and_ace() {
+    public void should_return_level_TWOPAIRS_and_ace_5S_second_ace_2H_when_given_2D_2H_5S_5H_7S_and_cal_hande_level_and_ace() {
         String given = "2D 2H 5S 5H 7S";
         Hand hand = PokerHand.getHandByString(given).get(0);
 
@@ -70,6 +70,8 @@ public class HandTest {
         assertEquals(PowerLevel.TWOPAIRS, hand.getPower().getLevel());
         assertEquals(CardNumber.FIVE, hand.getPower().getAce().getNumber());
         assertEquals(CardType.SPADE, hand.getPower().getAce().getType());
+        assertEquals(CardNumber.TWO, hand.getPower().getSecondAce().getNumber());
+        assertEquals(CardType.HEART, hand.getPower().getSecondAce().getType());
     }
 
     @Test

@@ -100,8 +100,8 @@ public class Hand {
         final Map.Entry<CardNumber, List<Card>> aceItem = list.get(list.size() - 1);
         final Map.Entry<CardNumber, List<Card>> secondAceItem = list.get(list.size() - 2);
         if (aceItem.getValue().size() == 2 && secondAceItem.getValue().size() == 2) {
-            return new Power(new Card(CardType.SPADE, aceItem.getKey()),
-                    new Card(CardType.SPADE, secondAceItem.getKey()), PowerLevel.TWOPAIRS);
+            return new Power(Util.getLastElementOfList(aceItem.getValue()),
+                    Util.getLastElementOfList(secondAceItem.getValue()), PowerLevel.TWOPAIRS);
         }
         return null;
     }
