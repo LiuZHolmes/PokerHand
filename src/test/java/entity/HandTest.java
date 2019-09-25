@@ -49,7 +49,7 @@ public class HandTest {
     }
 
     @Test
-    public void should_return_level_PAIR_and_ace_TWO_when_given_2D_2H_5S_6H_7S_and_cal_hande_level_and_ace() {
+    public void should_return_level_PAIR_and_ace_2H_when_given_2D_2H_5S_6H_7S_and_cal_hande_level_and_ace() {
         String given = "2D 2H 5S 6H 7S";
         Hand hand = PokerHand.getHandByString(given).get(0);
 
@@ -57,6 +57,7 @@ public class HandTest {
 
         assertEquals(PowerLevel.PAIR, hand.getPower().getLevel());
         assertEquals(CardNumber.TWO, hand.getPower().getAce().getNumber());
+        assertEquals(CardType.HEART, hand.getPower().getAce().getType());
     }
 
     @Test
