@@ -21,7 +21,7 @@
     2. 
         - input: THREEOFAKIND PAIR
         - output: positive
-7. compareAce
+7. compareCard
     1. 
         - input: 5D 2S
         - output: positive
