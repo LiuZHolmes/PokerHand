@@ -75,7 +75,7 @@ public class HandTest {
     }
 
     @Test
-    public void should_return_level_THREEOFAKIND_and_ace_TWO_when_given_2D_2H_2S_5H_7S_and_cal_hande_level_and_ace() {
+    public void should_return_level_THREEOFAKIND_and_ace_2S_when_given_2D_2H_2S_5H_7S_and_cal_hande_level_and_ace() {
         String given = "2D 2H 2S 5H 7S";
         Hand hand = PokerHand.getHandByString(given).get(0);
 
@@ -83,6 +83,7 @@ public class HandTest {
 
         assertEquals(PowerLevel.THREEOFAKIND, hand.getPower().getLevel());
         assertEquals(CardNumber.TWO, hand.getPower().getAce().getNumber());
+        assertEquals(CardType.SPADE, hand.getPower().getAce().getType());
     }
 
     @Test
