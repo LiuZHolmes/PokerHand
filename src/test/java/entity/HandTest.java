@@ -87,7 +87,7 @@ public class HandTest {
     }
 
     @Test
-    public void should_return_level_STRAIGHT_and_ace_SIX_when_given_2D_3H_4S_5H_6D_and_cal_hande_level_and_ace() {
+    public void should_return_level_STRAIGHT_and_ace_6D_when_given_2D_3H_4S_5H_6D_and_cal_hande_level_and_ace() {
         String given = "2D 3H 4S 5H 6D";
         Hand hand = PokerHand.getHandByString(given).get(0);
 
@@ -245,14 +245,15 @@ public class HandTest {
     }
 
     @Test
-    public void should_return_level_HIGHCARD_and_ace_SEVEN_and_remain_hand_size_4_when_given_2D_5S_3D_7S_6H_and_cal_hand_power() {
-        String given = "2D 5S 3D 7S 6H";
+    public void should_return_level_HIGHCARD_and_ace_7C_and_remain_hand_size_4_when_given_2D_5S_3D_7C_6H_and_cal_hand_power() {
+        String given = "2D 5S 3D 7C 6H";
         Hand hand = PokerHand.getHandByString(given).get(0);
 
         hand.calHandPower();
 
         assertEquals(4, hand.getRemainHand().size());
         assertEquals(CardNumber.SEVEN, hand.getPower().getAce().getNumber());
+        assertEquals(CardType.CLUB, hand.getPower().getAce().getType());
         assertEquals(PowerLevel.HIGHCARD, hand.getPower().getLevel());
     }
 }

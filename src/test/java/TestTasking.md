@@ -122,5 +122,5 @@
         - output: 2D 3H 4S 5H
 5. calHandPower
     1. high card
-        - input: 2D 5S 3D 7S 6H
-        - output: {ace: SEVEN, level: 0, remainHand:[]}
+        - input: 2D 5S 3D 7C 6H
+        - output: {ace: 7C, level: 0, remainHand:[]}
