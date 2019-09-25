@@ -89,7 +89,7 @@ public class Hand {
         ArrayList<Map.Entry<CardNumber, List<Card>>> list = countCards();
         final Map.Entry<CardNumber, List<Card>> item = list.get(list.size() - 1);
         if (item.getValue().size() == 2) {
-            return new Power(new Card(CardType.SPAED, item.getKey()), PowerLevel.PAIR);
+            return new Power(item.getValue().get(item.getValue().size() - 1), PowerLevel.PAIR);
         }
         return null;
     }
