@@ -69,7 +69,12 @@ public class Hand {
         Map<CardNumber, Long> cardNumberCounts = getCards().stream().map(Card::getNumber)
                 .collect(Collectors.groupingBy(x -> x, Collectors.counting()));
         ArrayList<Map.Entry<CardNumber, Long>> list = new ArrayList<>(cardNumberCounts.entrySet());
-        list.sort(comparing(Map.Entry::getValue));
+        list.sort(new Comparator<Map.Entry<CardNumber, Long>>() {
+            @Override
+            public int compare(Map.Entry<CardNumber, Long> o1, Map.Entry<CardNumber, Long> o2) {
+                return (int) (o1.getValue() - o2.getValue());
+            }
+        });
         return list;
     }
 
