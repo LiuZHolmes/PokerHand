@@ -6,6 +6,7 @@ import constant.PowerLevel;
 
 import java.util.*;
 import java.util.function.Supplier;
+import java.util.function.ToIntBiFunction;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -61,21 +62,19 @@ public class Hand {
         setPower(tryDifferentPower.stream().map(Supplier::get).filter(Objects::nonNull).findFirst().orElse(null));
     }
 
-    interface Comparator {
-        int compare(Map.Entry<CardNumber, Long> o1, Map.Entry<CardNumber, Long> o2);
-    }
+    private ToIntBiFunction<Map.Entry<CardNumber, Long>, Map.Entry<CardNumber, Long>> compareCount =
+            (Map.Entry<CardNumber, Long> o1, Map.Entry<CardNumber, Long> o2) -> (int) (o1.getValue() - o2.getValue());
 
-    private Comparator compareCount = (Map.Entry<CardNumber, Long> o1, Map.Entry<CardNumber, Long> o2) -> (int) (o1.getValue() - o2.getValue());
-
-    private Comparator compareCardNumber = (Map.Entry<CardNumber, Long> o1, Map.Entry<CardNumber, Long> o2) -> o1.getKey().compareTo(o2.getKey());
+    private ToIntBiFunction<Map.Entry<CardNumber, Long>, Map.Entry<CardNumber, Long>> compareCardNumber =
+            (Map.Entry<CardNumber, Long> o1, Map.Entry<CardNumber, Long> o2) -> o1.getKey().compareTo(o2.getKey());
 
     private ArrayList<Map.Entry<CardNumber, Long>> countCards() {
         Map<CardNumber, Long> cardNumberCounts = getCards().stream().map(Card::getNumber)
                 .collect(Collectors.groupingBy(x -> x, Collectors.counting()));
         ArrayList<Map.Entry<CardNumber, Long>> list = new ArrayList<>(cardNumberCounts.entrySet());
         list.sort((o1, o2) -> {
-            List<Comparator> comparators = Arrays.asList(compareCount, compareCardNumber);
-            return comparators.stream().map(x -> x.compare(o1, o2)).filter(x -> x != 0).findFirst().orElse(0);
+            List<ToIntBiFunction<Map.Entry<CardNumber, Long>, Map.Entry<CardNumber, Long>>> comparators = Arrays.asList(compareCount, compareCardNumber);
+            return comparators.stream().map(x -> x.applyAsInt(o1, o2)).filter(x -> x != 0).findFirst().orElse(0);
         });
         return list;
     }
