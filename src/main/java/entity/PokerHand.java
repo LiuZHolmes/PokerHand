@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.ToIntBiFunction;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -73,16 +74,27 @@ public class PokerHand {
                 .orElse(0);
     }
 
+    private static ToIntBiFunction<Hand, Hand> compareHandLevel =
+            (Hand hand, Hand secondHand) -> compareLevel(hand.getPower().getLevel(), secondHand.getPower().getLevel());
+
+    private static ToIntBiFunction<Hand, Hand> compareHandAce =
+            (Hand hand, Hand secondHand) -> compareCard(hand.getPower().getAce(), secondHand.getPower().getAce());
+
+    private static ToIntBiFunction<Hand, Hand> compareHandSecondAce =
+            (Hand hand, Hand secondHand) -> {
+                if (hand.getPower().getLevel() == PowerLevel.TWOPAIRS && secondHand.getPower().getLevel() == PowerLevel.TWOPAIRS) {
+                    return compareCard(hand.getPower().getSecondAce(), secondHand.getPower().getSecondAce());
+                }
+                return 0;
+            };
+
     static int compareHand(Hand hand, Hand secondHand) {
-        final int levelResult = compareLevel(hand.getPower().getLevel(), secondHand.getPower().getLevel());
-        if (levelResult != 0) return levelResult;
-        final int aceResult = compareCard(hand.getPower().getAce(), secondHand.getPower().getAce());
-        if (aceResult != 0) return aceResult;
-        if (hand.getPower().getLevel() == PowerLevel.TWOPAIRS) {
-            final int secondAceResult = compareCard(hand.getPower().getSecondAce(), secondHand.getPower().getSecondAce());
-            if (secondAceResult != 0) return secondAceResult;
-        }
-        return compareRemainHand(hand.getRemainHand(), secondHand.getRemainHand());
+        List<ToIntBiFunction<Hand, Hand>> comparators = Arrays.asList(compareHandLevel, compareHandAce, compareHandSecondAce);
+        return comparators.stream()
+                .map(x -> x.applyAsInt(hand, secondHand))
+                .filter(x -> x != 0)
+                .findFirst()
+                .orElseGet(() -> compareRemainHand(hand.getRemainHand(), secondHand.getRemainHand()));
     }
 
     static String getWinner(int given) {
