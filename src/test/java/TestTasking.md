@@ -39,6 +39,9 @@
     2. 
         - input: [2D 2H 2S JD QS] [3D 3H 4D 4S 7S]
         - output: positive
+    3. 
+        - input: [2D 2H 3S 3D QS] [2S 2C 3C 3H 7S]
+        - output: positive
 10. getWinner
     1. 
         - input: 0

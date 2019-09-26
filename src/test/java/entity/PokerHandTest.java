@@ -137,6 +137,18 @@ public class PokerHandTest {
     }
 
     @Test
+    public void should_return_positive_when_given_2D_2H_3S_3D_QS_and_2S_2C_3C_3H_7S() {
+        Hand hand = PokerHand.getHandByString("2D 2H 3S 3D QS").get(0);
+        Hand secondHand = PokerHand.getHandByString("2S 2C 3C 3H 7S").get(0);
+        hand.calHandPower();
+        secondHand.calHandPower();
+
+        final int result = PokerHand.compareHand(hand, secondHand);
+
+        assertTrue(result > 0);
+    }
+
+    @Test
     public void should_return_tied_when_given_0() {
         final int given = 0;
 
