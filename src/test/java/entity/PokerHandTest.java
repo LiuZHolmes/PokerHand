@@ -4,18 +4,51 @@ import constant.CardNumber;
 import constant.CardType;
 import constant.PowerLevel;
 import constant.Winner;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import org.junit.Assert;
+import org.junit.Rule;
 import org.junit.Test;
 
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import org.junit.rules.ExpectedException;
+import org.junit.rules.Timeout;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class PokerHandTest {
 
-    @Test
+    @Rule
+  public final Timeout globalTimeout = new Timeout(10000);
+
+  @Rule
+  public final ExpectedException thrown = ExpectedException.none();
+
+  // Test written by Diffblue Cover.
+  @Test
+  public void getAHandBy5CardsInput0OutputNull() {
+
+    // Arrange
+    final ArrayList<Card> cards = new ArrayList<Card>();
+
+    // Act and Assert result
+    Assert.assertNull(PokerHand.getAHandBy5Cards(cards));
+
+  }
+
+  // Test written by Diffblue Cover.
+  @Test
+  public void getWinnerInputZeroOutputNotNull() {
+
+    // Act and Assert result
+    Assert.assertEquals("Tied!", PokerHand.getWinner(0));
+
+  }
+
+  @Test
     public void should_return_FIVE_when_given_5() {
         String given = "5";
 
